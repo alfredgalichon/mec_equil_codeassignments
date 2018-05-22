@@ -1,4 +1,4 @@
-## HW for Math+Econ+Code Day 1 
+### HW for Math+Econ+Code Day 1 
 ## Danyan Zha
 ## May 21, 2018
 
@@ -98,6 +98,7 @@ Hessian <- function(p,U,C,nX,nY){
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
   rides_supply = sum(supply(p,C,nY))
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
   val = indutils(p,U,C,nX,nY)
   p_Gradient=p
   if (iter >= maxiter ) 
@@ -107,6 +108,7 @@ Hessian <- function(p,U,C,nX,nY){
     print(paste0("Precision error is = ", error))
     print(paste0("The total number of rides demand = ", rides_demand))
     print(paste0("The total number of rides supply = ", rides_supply))
+    print(paste0("The average price of a ride is = ", avgprice))
     print(paste0("Value of the minimization problem = ", val))
   }
 
@@ -117,15 +119,19 @@ Hessian <- function(p,U,C,nX,nY){
   p=res$par
 
   time = proc.time()-ptm
-  rides_demand = sum(demand(p,U,nX))
-  rides_supply = sum(supply(p,C,nY))
-  error= max(abs(rides_supply-rides_demand)/(rides_supply+rides_demand))
+  S = supply(p,C,nY)
+  D = demand(p,U,nX)
+  rides_demand = sum(D)
+  rides_supply = sum(S)
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
+  error = max(abs(S-D)/(S+D))
   p_Gradient_opt=p
   if (is.null(res$message)) {
     print(paste0("Gradient converged in ", time[1], "s."))
     print(paste0("Precision error is = ", error))
     print(paste0("The total number of rides demand = ", rides_demand))
     print(paste0("The total number of rides supply = ", rides_supply))
+    print(paste0("The average price of a ride is = ", avgprice))
     print(paste0("Value of the minimization problem = ", res$value))
   } else {
     print(res$message)
@@ -152,6 +158,7 @@ Hessian <- function(p,U,C,nX,nY){
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
   rides_supply = sum(supply(p,C,nY))
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
   val = indutils(p,U,C,nX,nY)
   p_Newton=p
   
@@ -162,6 +169,7 @@ Hessian <- function(p,U,C,nX,nY){
     print(paste0("Precision error is = ", error))
     print(paste0("The total number of rides demand = ", rides_demand))
     print(paste0("The total number of rides supply = ", rides_supply))
+    print(paste0("The average price of a ride is = ", avgprice))
     print(paste0("Value of the minimization problem = ", val))
   }
 
@@ -200,6 +208,7 @@ Hessian <- function(p,U,C,nX,nY){
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
   rides_supply = sum(supply(p,C,nY))
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
   val = indutils(p,U,C,nX,nY)
   p_Jacobi = p
   
@@ -210,6 +219,7 @@ Hessian <- function(p,U,C,nX,nY){
     print(paste0("Precision error is = ", error))
     print(paste0("The total number of rides demand = ", rides_demand))
     print(paste0("The total number of rides supply = ", rides_supply))
+    print(paste0("The average price of a ride is = ", avgprice))
     print(paste0("Value of the minimization problem = ", val))
   }
 
@@ -234,6 +244,7 @@ Hessian <- function(p,U,C,nX,nY){
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
   rides_supply = sum(supply(p,C,nY))
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
   val = indutils(p,U,C,nX,nY)
   p_Gauss=p
   if (iter >= maxiter ) 
@@ -243,38 +254,44 @@ Hessian <- function(p,U,C,nX,nY){
     print(paste0("Precision error is = ", error))
     print(paste0("The total number of rides demand = ", rides_demand))
     print(paste0("The total number of rides supply = ", rides_supply))
+    print(paste0("The average price of a ride is = ", avgprice))
     print(paste0("Value of the minimization problem = ", val))
   }
 
 # Summary of Previous findings:
-  # [1] "Direct gradient converged in 296 steps and 0.395999999999958s."
+  # [1] "Direct gradient converged in 296 steps and 0.325000000000045s."
   # [1] "Precision error is = 9.79475702593096e-07"
   # [1] "The total number of rides demand = 30.0742984777543"
   # [1] "The total number of rides supply = 30.0742553396218"
+  # [1] "The average price of a ride is = 0.844430416585444"
   # [1] "Value of the minimization problem = 191.668911118198"
   # 
-  # [1] "Gradient converged in 0.0190000000000055s."
-  # [1] "Precision error is = 2.83328655085832e-05"
+  # [1] "Gradient converged in 0.0199999999999818s."
+  # [1] "Precision error is = 7.16272517309403e-05"
   # [1] "The total number of rides demand = 30.0759458634938"
   # [1] "The total number of rides supply = 30.074241636321"
+  # [1] "The average price of a ride is = 0.844352148277277"
   # [1] "Value of the minimization problem = 191.668911202612"
   # 
-  # [1] "Newton method converged in 60 steps and 4.04300000000001s."
+  # [1] "Newton method converged in 60 steps and 4.12900000000002s."
   # [1] "Precision error is = 9.74517195854596e-07"
   # [1] "The total number of rides demand = 30.0742149201625"
   # [1] "The total number of rides supply = 30.0742560356446"
+  # [1] "The average price of a ride is = 0.844434401869166"
   # [1] "Value of the minimization problem = 191.668911118195"
   # 
-  # [1] "Jacobi Coordinate Descent Method converged in 30 steps and 0.0900000000000318s."
+  # [1] "Jacobi Coordinate Descent Method converged in 30 steps and 0.0710000000000264s."
   # [1] "Precision error is = 8.38923706543084e-07"
   # [1] "The total number of rides demand = 30.0743045856514"
   # [1] "The total number of rides supply = 30.0742552882611"
+  # [1] "The average price of a ride is = 0.844430117608689"
   # [1] "Value of the minimization problem = 191.668911118212"
   # 
-  # [1] "Gauss-Seidel Coordinate Descent Method converged in 21 steps and 1.55399999999997s."
+  # [1] "Gauss-Seidel Coordinate Descent Method converged in 21 steps and 1.40899999999999s."
   # [1] "Precision error is = 6.49126557689387e-07"
   # [1] "The total number of rides demand = 30.0742777456828"
   # [1] "The total number of rides supply = 30.0742555124653"
+  # [1] "The average price of a ride is = 0.844431406422646"
   # [1] "Value of the minimization problem = 191.668911118167"
   
 ## Optional: Change Supply Function
