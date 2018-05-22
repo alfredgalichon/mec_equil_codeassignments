@@ -1,0 +1,33 @@
+1. Gradient Descent results:
+
+Precision: 9.72455498356714e-06
+Total number of rides: 30.0536387726308
+Average price of a ride: 24.8975961710119
+Time to converge: 0.514 seconds 
+Iterations: 351
+
+2. Newton method results:
+
+Precision: 9.39850678945486e-06
+Total number of rides: 30.053644608031
+Average price of a ride: 24.8976569166004
+Time to converge: 20.714 seconds
+Iterations: 108
+
+3. Coordinate Updates - Jacobi
+
+Precision: 1.23441666516795e-06
+Total number of rides: 30.0536199484512
+Average price of a ride: 24.8975988782718
+Time to converge: 5.69 seconds
+Iterations: 4
+
+4. Coordinate Updates - Jacobi - with subsidies
+
+Precision: 3.89619114463081e-07
+Total number of rides: 30.1174389423885
+Average price of a ride: 24.8576704723407
+Time to converge: 6.88 seconds
+Iterations: 4
+
+
