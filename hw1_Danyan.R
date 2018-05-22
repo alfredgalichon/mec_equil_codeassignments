@@ -1,4 +1,4 @@
-### HW for Math+Econ+Code Day 1 
+## HW for Math+Econ+Code Day 1 
 ## Danyan Zha
 ## May 21, 2018
 
@@ -53,7 +53,7 @@ excess_supply <- function(p,U,C,nX,nY){
   return(supply(p,C,nY)-demand(p,U,nX))
 }
 
-Hessian <- function(p,U,C, nX, nY){
+Hessian <- function(p,U,C,nX,nY){
   DE <- matrix(0,n^2, n^2)
   A_xz = exp(t(t(U)-p))
   B_x = 1 + rowSums(A_xz)
@@ -75,7 +75,7 @@ Hessian <- function(p,U,C, nX, nY){
 }
 
 ## Direct Gradient Method
-  tol = 1e-5
+  tol = 1e-6
   maxiter <- 1000000
   p0 = rep(0, n^2)
   eps = 0.2
@@ -89,9 +89,11 @@ Hessian <- function(p,U,C, nX, nY){
     iter = iter + 1 
     S = supply(p,C,nY)
     D = demand(p,U,nX)
+    p = p-eps*(S-D)
+    S = supply(p,C,nY)
+    D = demand(p,U,nX)
     error = max(abs(S-D)/(S+D))
     if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
-    p = p-eps*(S-D)
   }
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
@@ -113,7 +115,7 @@ Hessian <- function(p,U,C, nX, nY){
   ptm=proc.time()
   res = optim(p0,indutils,excess_supply,U=U, C=C, nX=nX, nY=nY, method="BFGS",control=list(maxit=maxiter))
   p=res$par
-  
+
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
   rides_supply = sum(supply(p,C,nY))
@@ -140,10 +142,12 @@ Hessian <- function(p,U,C, nX, nY){
     iter = iter + 1
     S = supply(p,C,nY)
     D = demand(p,U,nX)
+    H = Hessian(p,U,C,nX,nY)
+    p = p- eps*as.vector(solve(H) %*% (S-D))
+    S = supply(p,C,nY)
+    D = demand(p,U,nX)
     error = max(abs(S-D)/(S+D))
     if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
-    H = Hessian(p,U,C, nX, nY)
-    p = p- eps*as.vector(solve(H) %*% (S-D))
   }
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
@@ -186,9 +190,11 @@ Hessian <- function(p,U,C, nX, nY){
     iter = iter + 1 
     S = supply(p,C,nY)
     D = demand(p,U,nX)
+    p = update(p,U,C,nX,nY)
+    S = supply(p,C,nY)
+    D = demand(p,U,nX) 
     error = max(abs(S-D)/(S+D))
     if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
-    p = update(p,U,C,nX,nY)
   }
 
   time = proc.time()-ptm
@@ -215,14 +221,14 @@ Hessian <- function(p,U,C, nX, nY){
   
   while (cont){
     iter = iter + 1
+    for (j in 1:dim(Z)[1]){
+      p_new = update(p,U,C,nX,nY)
+      p[j]=p_new[j]
+    }
     S = supply(p,C,nY)
     D = demand(p,U,nX)
     error = max(abs(S-D)/(S+D))
     if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
-      for (j in 1:dim(Z)[1]){
-        p_new = update(p,U,C,nX,nY)
-        p[j]=p_new[j]
-      }
   }
   
   time = proc.time()-ptm
@@ -241,11 +247,11 @@ Hessian <- function(p,U,C, nX, nY){
   }
 
 # Summary of Previous findings:
-  # [1] "Direct gradient converged in 297 steps and 0.298000000000002s."
+  # [1] "Direct gradient converged in 296 steps and 0.395999999999958s."
   # [1] "Precision error is = 9.79475702593096e-07"
-  # [1] "The total number of rides demand = 30.0742966681671"
-  # [1] "The total number of rides supply = 30.0742553546667"
-  # [1] "Value of the minimization problem = 191.668911118195"
+  # [1] "The total number of rides demand = 30.0742984777543"
+  # [1] "The total number of rides supply = 30.0742553396218"
+  # [1] "Value of the minimization problem = 191.668911118198"
   # 
   # [1] "Gradient converged in 0.0190000000000055s."
   # [1] "Precision error is = 2.83328655085832e-05"
@@ -253,25 +259,26 @@ Hessian <- function(p,U,C, nX, nY){
   # [1] "The total number of rides supply = 30.074241636321"
   # [1] "Value of the minimization problem = 191.668911202612"
   # 
-  # [1] "Newton method converged in 61 steps and 4.0569999999999s."
+  # [1] "Newton method converged in 60 steps and 4.04300000000001s."
   # [1] "Precision error is = 9.74517195854596e-07"
-  # [1] "The total number of rides demand = 30.0742230325944"
-  # [1] "The total number of rides supply = 30.0742559679333"
-  # [1] "Value of the minimization problem = 191.668911118181"
+  # [1] "The total number of rides demand = 30.0742149201625"
+  # [1] "The total number of rides supply = 30.0742560356446"
+  # [1] "Value of the minimization problem = 191.668911118195"
   # 
-  # [1] "Jacobi Coordinate Descent Method converged in 31 steps and 0.0630000000001019s."
+  # [1] "Jacobi Coordinate Descent Method converged in 30 steps and 0.0900000000000318s."
   # [1] "Precision error is = 8.38923706543084e-07"
-  # [1] "The total number of rides demand = 30.0742873849622"
-  # [1] "The total number of rides supply = 30.0742554314715"
-  # [1] "Value of the minimization problem = 191.668911118178"
-  
-  # [1] "Gauss-Seidel Coordinate Descent Method converged in 22 steps and 1.58600000000001s."
+  # [1] "The total number of rides demand = 30.0743045856514"
+  # [1] "The total number of rides supply = 30.0742552882611"
+  # [1] "Value of the minimization problem = 191.668911118212"
+  # 
+  # [1] "Gauss-Seidel Coordinate Descent Method converged in 21 steps and 1.55399999999997s."
   # [1] "Precision error is = 6.49126557689387e-07"
-  # [1] "The total number of rides demand = 30.0742670640525"
-  # [1] "The total number of rides supply = 30.0742556010412"
-  # [1] "Value of the minimization problem = 191.668911118158"
-
+  # [1] "The total number of rides demand = 30.0742777456828"
+  # [1] "The total number of rides supply = 30.0742555124653"
+  # [1] "Value of the minimization problem = 191.668911118167"
+  
 ## Optional: Change Supply Function
+  
 
 
 
