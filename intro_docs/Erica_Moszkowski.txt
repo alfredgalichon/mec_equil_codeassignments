@@ -1,6 +1,6 @@
 1. Erica Moszkowski, emoszkowski@g.harvard.edu
 2. Business Economics, Harvard Business School
-3. Registered Student
+3. Auditor
 4. I did not take the January course.
 5. I'm looking to learn new tools (theoretical and computational) for optimization and computing equilibrium. I'd like to be able to apply what I've learned to a couple of current projects.
 6.
