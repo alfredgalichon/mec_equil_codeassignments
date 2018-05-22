@@ -143,7 +143,7 @@ Hessian <- function(p,U,C, nX, nY){
     error = max(abs(S-D)/(S+D))
     if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
     H = Hessian(p,U,C, nX, nY)
-    p = p-eps*solve(H)*(S-D)
+    p = p- eps*as.vector(solve(H) %*% (S-D))
   }
   time = proc.time()-ptm
   rides_demand = sum(demand(p,U,nX))
@@ -239,6 +239,37 @@ Hessian <- function(p,U,C, nX, nY){
     print(paste0("The total number of rides supply = ", rides_supply))
     print(paste0("Value of the minimization problem = ", val))
   }
+
+# Summary of Previous findings:
+  # [1] "Direct gradient converged in 297 steps and 0.298000000000002s."
+  # [1] "Precision error is = 9.79475702593096e-07"
+  # [1] "The total number of rides demand = 30.0742966681671"
+  # [1] "The total number of rides supply = 30.0742553546667"
+  # [1] "Value of the minimization problem = 191.668911118195"
+  # 
+  # [1] "Gradient converged in 0.0190000000000055s."
+  # [1] "Precision error is = 2.83328655085832e-05"
+  # [1] "The total number of rides demand = 30.0759458634938"
+  # [1] "The total number of rides supply = 30.074241636321"
+  # [1] "Value of the minimization problem = 191.668911202612"
+  # 
+  # [1] "Newton method converged in 61 steps and 4.0569999999999s."
+  # [1] "Precision error is = 9.74517195854596e-07"
+  # [1] "The total number of rides demand = 30.0742230325944"
+  # [1] "The total number of rides supply = 30.0742559679333"
+  # [1] "Value of the minimization problem = 191.668911118181"
+  # 
+  # [1] "Jacobi Coordinate Descent Method converged in 31 steps and 0.0630000000001019s."
+  # [1] "Precision error is = 8.38923706543084e-07"
+  # [1] "The total number of rides demand = 30.0742873849622"
+  # [1] "The total number of rides supply = 30.0742554314715"
+  # [1] "Value of the minimization problem = 191.668911118178"
+  
+  # [1] "Gauss-Seidel Coordinate Descent Method converged in 22 steps and 1.58600000000001s."
+  # [1] "Precision error is = 6.49126557689387e-07"
+  # [1] "The total number of rides demand = 30.0742670640525"
+  # [1] "The total number of rides supply = 30.0742556010412"
+  # [1] "Value of the minimization problem = 191.668911118158"
 
 ## Optional: Change Supply Function
 
