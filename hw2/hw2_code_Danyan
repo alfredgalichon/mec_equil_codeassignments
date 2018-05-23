@@ -1,0 +1,441 @@
+### HW for Math+Econ+Code Day 2
+## Danyan Zha
+## May 22, 2018
+
+##Q1 Parallelizing the Coordinate Update Algorithm
+rm(list=ls())
+library(doParallel)
+
+n <- 10
+X1 = rep(0.1*c(1:10), n)
+X2 = rep(0.1*c(1:10),each=n)
+X = cbind(X1,X2)
+Y = X
+Z = X
+
+nX = rep(1,dim(X)[1])
+nY = Y[,1]*Y[,2] 
+
+dist = matrix(0,n^2, n^2)
+for (i in 1:n^2){
+  for (j in 1:n^2){
+    dist[i,j]=sqrt(sum((X[i,]-Z[j,])^2))
+  }
+}
+
+U = -10 *(dist-0.099999999>0)
+C = dist^2
+
+demand <- function(p,U,nX){
+  A_xz = exp(t(t(U)-p))
+  B_x = 1 + rowSums(A_xz)
+  C_xz = nX*A_xz/B_x
+  return(colSums(C_xz))
+}
+
+supply <- function(p,C,nY){
+  A_yz = exp(t(p-t(C)))
+  B_y = 1 + rowSums(A_yz)
+  C_yz = nY*A_yz/B_y
+  return(colSums(C_yz))
+}
+
+indutils <- function(p,U,C,nX,nY){
+  A_xz = exp(t(t(U)-p))
+  B_x = log(1 + rowSums(A_xz))
+  
+  A_yz = exp(t(p-t(C)))
+  B_y = log(1 + rowSums(A_yz))
+  
+  return(sum(nX*B_x)+sum(nY*B_y))
+}
+
+# Coordinate Descent
+# Jacobi Descent
+update_paralle <- function(p,i,U,C,nX,nY){
+  A_xz = exp(t(t(U)-p))
+  B_x = 1 + rowSums(A_xz)
+
+  A_yz = exp(t(p-t(C)))
+  B_y = 1 + rowSums(A_yz)
+  
+  p = 1/2*(log(sum(nX*exp(U[,i])/B_x))-log(sum(nY*exp(-C[,i])/B_y)))
+  return(p)
+}
+
+#
+tol = 1e-6
+maxiter <- 1000000
+p0 = rep(0, n^2)
+
+for (n_cores in 1:4){
+  cl <- makeCluster(n_cores)
+  registerDoParallel(cl)
+  
+  ptm=proc.time()
+  cont = TRUE
+  iter = 0
+  p = p0
+  
+  while (cont){
+    iter = iter + 1 
+    S = supply(p,C,nY)
+    D = demand(p,U,nX)
+    p = foreach (i=1:100,.combine=c) %dopar%{
+      p[i]=update_paralle(p,i,U,C,nX,nY)
+    }
+    S = supply(p,C,nY)
+    D = demand(p,U,nX) 
+    error = max(abs(S-D)/(S+D))
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+  }
+  
+  stopCluster(cl)
+  
+  time = proc.time()-ptm
+  rides_demand = sum(demand(p,U,nX))
+  rides_supply = sum(supply(p,C,nY))
+  avgprice = sum(demand(p,U,nX)*p)/rides_demand
+  val = indutils(p,U,C,nX,nY)
+  p_Jacobi = p
+  
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached in Jacobi Coordinate Descent Method.')
+  } else {
+    print(paste0("Number of cores used is ", n_cores))
+    print(paste0("Jacobi Coordinate Descent Method converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Precision error is = ", error))
+    print(paste0("Value of the minimization problem = ", val))
+  }
+}
+#In this case where we can write down the closed-form update process, parrellization is actually slower than
+#the non-parrellization code. The more cores I use, the longer the time it took.
+
+##Q2 Matching without Transfers
+rm(list=ls())
+
+n <- 10
+X1 = rep(0.1*c(1:10), n)
+X2 = rep(0.1*c(1:10),each=n)
+X = cbind(X1,X2)
+Y = X
+
+nX = rep(1,dim(X)[1])
+nY = Y[,1]*Y[,2] 
+
+dist = matrix(0,n^2, n^2)
+for (i in 1:n^2){
+  for (j in 1:n^2){
+    dist[i,j]=sqrt(sum((X[i,]-Y[j,])^2))
+  }
+}
+
+alpha_xy = -1 *(dist>=0.5)
+gamma_xy = -dist
+u0 = -2
+v0 = -2
+
+maxiter = 1000000
+tol = 1e-5
+
+# Gale and Shapley's algorithm
+mu_A0 = matrix(nX, n^2, n^2)
+
+ptm=proc.time()
+cont = TRUE
+iter = 0
+mu_A = mu_A0
+
+
+while (cont){
+  iter = iter + 1
+  mu_P = matrix(0, n^2, n^2)
+  mu_E = matrix(0, n^2, n^2)
+  C = rep(0, n^2)
+  for (i in 1:dim(alpha_xy)[1]){
+    rank = n^2-rank(alpha_xy[i,],ties.method="last")
+    for (j in 0:n^2-1){
+      C[match(j,rank)] = sum(mu_A[i,match(c(0:j),rank)])
+    }
+    D = nX[i] - C
+    k = which(D>0)
+    mu_P[i,k]=mu_A[i,k]
+    mu_P[i,match(length(k),rank)]=nX[i]-sum(mu_P[i,])
+  }
+  
+  for (j in 1:dim(gamma_xy)[2]){
+    rank = n^2-rank(gamma_xy[,j],ties.method="last")
+    for (i in 0:n^2-1){
+      C[match(i,rank)] = sum(mu_P[match(c(0:i),rank),j])
+    }
+    D=nY[j]-C
+    k = which(D>0)
+    mu_E[k,j]=mu_P[k,j]
+    mu_E[match(length(k),rank),j]=nY[j]-sum(mu_E[,j])
+  }
+  
+  mu_A=mu_A-(mu_P-mu_E)
+  error = max(abs(mu_P-mu_E))
+  if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+  #print(paste0("Iteration number= ",iter, " errors = ", error))
+  }
+  
+  time = proc.time()-ptm
+  nX_unmatched = nX - rowSums(mu_E)
+  nY_unmatched = nY - colSums(mu_E)
+  wX = sum(mu_E*alpha_xy) + sum(nX_unmatched)*u0
+  wY = sum(mu_E*gamma_xy) + sum(nY_unmatched)*v0
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached in Newton Method.')
+  } else {
+    print(paste0("Gale and Shapley converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Total number of passengers is ", sum(nX), "; Unmatched passengers are ", sum(nX_unmatched)))
+    print(paste0("Total Welfare on the passengers' side is ",wX))
+    print(paste0("Total number of drivers is ,", sum(nY), "; Unmatched drivers are ", sum(nY_unmatched)))
+    print(paste0("Total Welfare on the drivers' side is ",wY))
+    print(paste0("Total matches are ",sum(mu_E)))
+  }
+
+  ## Q3 Gale and Shapley's algorithm
+  set.seed(0)
+  tiebreakersalpha = 0.01 * matrix(runif(10000),100,100)
+  tiebreakersgamma = 0.01 * matrix(runif(10000),100,100)
+  
+  alpha_xy = alpha_xy + tiebreakersalpha
+  gamma_xy = gamma_xy + tiebreakersgamma
+  
+  mu_A0 = matrix(nX, n^2, n^2)
+  
+  ptm=proc.time()
+  cont = TRUE
+  iter = 0
+  mu_A = mu_A0
+  
+  
+  while (cont){
+    iter = iter + 1
+    mu_P = matrix(0, n^2, n^2)
+    mu_E = matrix(0, n^2, n^2)
+    C = rep(0, n^2)
+    for (i in 1:dim(alpha_xy)[1]){
+      rank = n^2-rank(alpha_xy[i,],ties.method="last")
+      for (j in 0:n^2-1){
+        C[match(j,rank)] = sum(mu_A[i,match(c(0:j),rank)])
+      }
+      D = nX[i] - C
+      k = which(D>0)
+      mu_P[i,k]=mu_A[i,k]
+      mu_P[i,match(length(k),rank)]=nX[i]-sum(mu_P[i,])
+    }
+    
+    for (j in 1:dim(gamma_xy)[2]){
+      rank = n^2-rank(gamma_xy[,j],ties.method="last")
+      for (i in 0:n^2-1){
+        C[match(i,rank)] = sum(mu_P[match(c(0:i),rank),j])
+      }
+      D=nY[j]-C
+      k = which(D>0)
+      mu_E[k,j]=mu_P[k,j]
+      mu_E[match(length(k),rank),j]=nY[j]-sum(mu_E[,j])
+    }
+    
+    mu_A=mu_A-(mu_P-mu_E)
+    error = max(abs(mu_P-mu_E))
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+    #print(paste0("Iteration number= ",iter, " errors = ", error))
+  }
+  
+  time = proc.time()-ptm
+  nX_unmatched = nX - rowSums(mu_E)
+  nY_unmatched = nY - colSums(mu_E)
+  wX = sum(mu_E*alpha_xy) + sum(nX_unmatched)*u0
+  wY = sum(mu_E*gamma_xy) + sum(nY_unmatched)*v0
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached in Newton Method.')
+  } else {
+    print(paste0("Question 3 with tie breakings"))
+    print(paste0("Gale and Shapley converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Total number of passengers is ", sum(nX), "; Unmatched passengers are ", sum(nX_unmatched)))
+    print(paste0("Total Welfare on the passengers' side is ",wX))
+    print(paste0("Total number of drivers is ,", sum(nY), "; Unmatched drivers are ", sum(nY_unmatched)))
+    print(paste0("Total Welfare on the drivers' side is ",wY))
+    print(paste0("Total matches are ",sum(mu_E)))
+  }
+  
+############# Adachi's Algorithm
+# Q2
+  rm(list=ls())
+
+  n <- 10
+  X1 = rep(0.1*c(1:10), n)
+  X2 = rep(0.1*c(1:10),each=n)
+  X = cbind(X1,X2)
+  Y = X
+  
+  # nX = rep(1,dim(X)[1])
+  # nY = Y[,1]*Y[,2] 
+  # 
+  # T = 100
+  # X_expand = X[rep(1:nrow(X), times = T*nX),]
+  # Y_expand = Y[rep(1:nrow(Y), times = T*nY),]
+  # 
+  # dimX = dim(X_expand)[1]
+  # dimY = dim(Y_expand)[1]
+  # 
+  # dist = matrix(0, dimX, dimY)
+  # 
+  # n_cores <- 4
+  # #
+  # cl <- makeCluster(n_cores)
+  # registerDoParallel(cl)
+  # 
+  # dist <- foreach(i=1:dimX, .combine=c) %dopar% {
+  #   for (j in 1:dimY){
+  #     dist[i,j]=sqrt(sum((X_expand[i,]-Y_expand[j,])^2))
+  #   }
+  #   dist
+  # }
+  # stopCluster(cl)
+  
+  dimX = dim(X)[1]
+  dimY = dim(Y)[1]
+  
+  dist = matrix(0,n^2, n^2)
+  for (i in 1:n^2){
+    for (j in 1:n^2){
+      dist[i,j]=sqrt(sum((X[i,]-Y[j,])^2))
+    }
+  }
+  
+  alpha_xy = -1 *(dist>=0.5)
+  gamma_xy = -dist
+  u0 = -2
+  v0 = -2
+  
+  maxiter = 1000000
+  tol = 1e-5
+  cont = TRUE
+  iter = 0
+  
+  p0 = apply(alpha_xy,1,max)
+  q0 = rep (-v0, dimY)
+  p = p0
+  q = q0
+  p_new = rep(0, dimX)
+  q_new = rep(0, dimY)
+  
+  ptm = proc.time()
+  
+  while(cont){
+    iter = iter + 1
+    for (i in 1:dimX){
+      k = which(q+gamma_xy[i,]>=0)
+      p_new[i] = max(alpha_xy[i,k], u0)
+    }
+    
+    for (j in 1:dimY){
+      k = which(alpha_xy[,j]-p>=0)
+      q_new[j] = min(-gamma_xy[k,j],-v0)
+    }
+    
+    error = max(abs(p_new-p), abs(q_new-q))
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+    p = p_new
+    q = q_new
+    print(paste0("Iteration number= ",iter, " errors = ", error))
+  }
+  
+  time = proc.time()-ptm
+  wX = sum(p)
+  wY = sum(-q)
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached in Newton Method.')
+  } else {
+    print(paste0("Question 2"))
+    print(paste0("Adachi converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Total Welfare on the passengers' side is ",wX))
+    print(paste0("Total Welfare on the drivers' side is ",wY))
+  }
+  
+
+# Q3
+  n <- 10
+  X1 = rep(0.1*c(1:10), n)
+  X2 = rep(0.1*c(1:10),each=n)
+  X = cbind(X1,X2)
+  Y = X
+  
+  dimX = dim(X)[1]
+  dimY = dim(Y)[1]
+  
+  dist = matrix(0,n^2, n^2)
+  for (i in 1:n^2){
+    for (j in 1:n^2){
+      dist[i,j]=sqrt(sum((X[i,]-Y[j,])^2))
+    }
+  }
+  
+  alpha_xy = -1 *(dist>=0.5)
+  gamma_xy = -dist
+  
+  set.seed(0)
+  tiebreakersalpha = 0.01 * matrix(runif(10000),100,100)
+  tiebreakersgamma = 0.01 * matrix(runif(10000),100,100)
+  
+  alpha_xy = alpha_xy + tiebreakersalpha
+  gamma_xy = gamma_xy + tiebreakersgamma
+  
+  u0 = -2
+  v0 = -2
+  
+  maxiter = 1000000
+  tol = 1e-5
+  cont = TRUE
+  iter = 0
+  
+  p0 = apply(alpha_xy,1,max)
+  q0 = rep (-v0, dimY)
+  p = p0
+  q = q0
+  p_new = rep(0, dimX)
+  q_new = rep(0, dimY)
+  
+  ptm = proc.time()
+  
+  while(cont){
+    iter = iter + 1
+    for (i in 1:dimX){
+      k = which(q+gamma_xy[i,]>=0)
+      p_new[i] = max(alpha_xy[i,k], u0)
+    }
+    
+    for (j in 1:dimY){
+      k = which(alpha_xy[,j]-p>=0)
+      q_new[j] = min(-gamma_xy[k,j],-v0)
+    }
+    
+    error = max(abs(p_new-p), abs(q_new-q))
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+    p = p_new
+    q = q_new
+    print(paste0("Iteration number= ",iter, " errors = ", error))
+  }
+  
+  time = proc.time()-ptm
+  wX = sum(p)
+  wY = sum(-q)
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached in Newton Method.')
+  } else {
+    print(paste0("Question 3"))
+    print(paste0("Adachi converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Total Welfare on the passengers' side is ",wX))
+    print(paste0("Total Welfare on the drivers' side is ",wY))
+  }
+  
+  
+  
+  
+  
+  
+  
