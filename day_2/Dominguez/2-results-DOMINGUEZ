@@ -1,0 +1,21 @@
+1. Parallelizing the Coordinate Update Algorithm
+
+Unparallelized CU : 5.69 seconds
+Parallelized CU (2 cores): 6.60 seconds
+Parallelized CU (4 cores): 7.22 seconds
+Parallelized CU (6 cores): 8.84 seconds
+
+2. Gale-Shapley Algorithm
+
+Total passenger welfare: -19801
+Total driver welfare: -19824
+Iterations: 7
+Time taken: 0.064 seconds
+
+3. Gale-Shapley Algorithm (with tiebreakers)
+
+Total passenger welfare: -19800
+Total driver welfare: 19826
+Iterations: 6
+Time taken: 0.054 seconds
+
