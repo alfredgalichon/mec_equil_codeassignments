@@ -1,0 +1,237 @@
+### HW for Math+Econ+Code Day 2
+## Danyan Zha
+## May 23, 2018
+
+rm(list=ls())
+library('gurobi')
+library(doParallel)
+require(graphics)
+library("EnvStats")
+
+nodes <- read.csv("~/Dropbox/MEC May 2018/mec_equil/data/NYC_subway/nodes.csv")
+arcs <- read.csv("~/Dropbox/MEC May 2018/mec_equil/data/NYC_subway/arcs.csv")
+arcs <- arcs[,1:3]
+
+originNode <- 452 # 14 St - Union Sq
+destNode <- 471 # 59 St (R/N)
+
+nNodes <- dim(nodes)[1]
+nArcs <- dim(arcs)[1]
+
+# Q1 call gurobi
+  s = rep (0, nNodes)
+  s[originNode] = -1
+  s[destNode] = 1
+  
+  incidence_matrix <- function(nNodes, arcs){
+    nArcs = dim(arcs)[1]
+    D = matrix(0, nArcs, nNodes) # Transpose of Incidence Matrix
+    for (i in 1:nArcs){
+      D[i, arcs[i,1]] = -1
+      D[i, arcs[i,2]] = 1
+    }
+    return(t(D))
+  }
+  
+  A = incidence_matrix(nNodes,arcs)
+  
+  #call gurobi
+  ptm = proc.time()
+  result = gurobi(list(A=A,obj=arcs[,3],modelsense="min",rhs=s,sense="=",lb=0, ub=1), params=list(OutputFlag=0))
+  print(result$status)
+  time = proc.time()-ptm
+  if (result$status == "OPTIMAL"){
+    print(paste0("Gurobi achieved optimation in ",time[1], "s"))
+    print(paste0("With Gurobi, minimized cost from origin to destination is ", result$objval))
+  } else{
+    print("Gurobi didn't achieve optimization")
+  }
+  result$x
+  print (paste0("Flow is equal to zero except at the following arcs:"))
+  cat(paste0("\t", which(result$x==1), "\n"))
+  
+
+# Q2  List each node of the shortest path
+  k = which(result$x==1)
+  paths = arcs[k,1:2]
+  nodelist = rep(0, length(k)+1)
+  nodelist [1] = originNode
+  for (i in 2:length(nodelist)){
+    nodelist[i] = paths[which(paths[,1] == nodelist[i-1]),2]
+  }
+  nodename = rep("",length(k)+1)
+  for (i in 1:length(nodename)){
+    nodename[i] = as.character(nodes$stop_name[which(nodes$stop_nb==nodelist[i])])
+  }
+  shortpath_gurobi <- data.frame(nodelist, nodename, stringsAsFactors=FALSE)
+
+  print("The shortest path is as following:")
+  cat(paste0("\t", shortpath_gurobi$nodename, "\n"))
+  
+# Q3 Bellman-Ford algorithm
+  p0 = rep(Inf, nNodes)
+  p0[originNode] = 0
+  
+  ptm=proc.time()
+  cont = TRUE
+  maxiter = 1000000
+  tol = 1e-5  
+  iter = 0
+  p = p0
+  
+  p_update <- function(p,arcs) {
+    p_update = rep(Inf, length(p))
+    node_index = rep(0, length(p))
+    for (i in 1: length(p)){
+      arcs_connect = arcs[which(arcs[,2]==i),]
+      p_arcs_connect = arcs_connect[,3] + p[arcs_connect[,1]]
+      p_update[i] = min(p_arcs_connect)
+      if (is.infinite(p_update[i])==F){
+        node_index [i] = arcs_connect[which(p_arcs_connect==p_update[i]),1]
+      }
+    }
+    return(list(p = p_update,
+           index = node_index))
+  }
+  
+  while (cont){
+    iter = iter + 1
+    p_new = pmin(p, p_update(p,arcs)$p)
+    error = p_new - p
+    error[which(is.na(error))] <- 0 # change Inf-Inf to zero
+    error = max(abs(error))
+    if ( (error < tol ) | (iter>=maxiter)){cont=FALSE}
+    p = p_new
+    print(paste0("iteration ", iter, "error is ", error))
+  }
+  
+  p_BF = p
+  print(paste0("With Bellman-Ford algorithm, minimized cost from Origin to Destination is ", p_BF[destNode]))
+
+# Q4 Regularized problem (Approximate Min-Cost Problem)
+  T = 1
+  flow <- function(p, arcs,T){
+    dist = arcs[,3]
+    mu = exp((p[arcs[,2]]-p[arcs[,1]]-dist)/T)
+    return(mu)
+  }
+  
+  # Using Gradient Method with optimization formulation
+  fval <- function(p,s,arcs,T){
+    nNodes = length(s)
+    mu = flow(p,arcs,T)
+    fval = -sum(s*p)+T*sum(mu)
+  }
+  
+  excess <- function (p,s,arcs,T){
+    nNodes = length(s)
+    A = incidence_matrix(nNodes,arcs)
+    excess = A %*% flow(p,arcs,T)-s
+    return(excess)
+  }
+  
+  ptm=proc.time()
+  p0 = rep(0, nNodes)
+  res = optim(p0,fval,excess,s=s, arcs=arcs, T=T, method="BFGS", control=list(maxit=maxiter))
+  p=res$par
+  mu_uncond = flow(p,arcs,T)
+  time = proc.time()-ptm
+  
+  if (is.null(res$message)) {
+    print(paste0("Gradient converged in ", time[1], "s."))
+    print(paste0("Value of the minimization problem = ", res$value))
+  } else {
+    print(res$message)
+  }  
+  
+  print("Values of mu at the shortest path in the non-regularization problem are:")
+  cat(paste0("\t", mu_uncond[k], "\n"))
+  
+
+# Q5 Approximate Shortest Path 
+  condprob = rep(0, nArcs) # Probability of moving to y conditionally on being at x 
+  for (i in 1:nArcs){
+    start_node = arcs[i,1]
+    index_next = which(arcs[,1]==start_node)
+    sumprob_next = sum(mu_uncond[index_next])
+    if (sumprob_next>0){
+      condprob[i] = mu_uncond[i]/sumprob_next
+    }
+    else{   # assign equal conditional probabilities where sum is 0
+      condprob[i] = 1/length(index_next)
+    }
+  }
+  
+  # simulate random trajectories
+  maxiter <- 2000
+  N <- 10000
+  simulate_cost <- rep(0,N)
+  
+  
+  ptm = proc.time()
+  for (j in 1:N) {
+    cont = TRUE
+    road = 0
+    iter = 0
+    from_node = originNode
+    while (cont){
+      iter = iter + 1 
+      connected_arcs_set = which(arcs[,1]==from_node)
+      prob = condprob[connected_arcs_set]
+      arcs_selected = sample(x = connected_arcs_set, 1, replace = TRUE, prob = prob)
+      to_node = arcs[arcs_selected,2]
+      road = road + arcs[arcs_selected,3]
+      if ( (to_node - destNode == 0 ) | (iter>=maxiter)) {cont=FALSE}
+      if (iter >= maxiter ) 
+      {print(paste0("Maximum number of iterations reached in simulation", j))}
+      from_node = to_node    
+    } 
+    simulate_cost[j] = road
+  }
+  
+  time = proc.time()-ptm
+  
+  remove_outliers <- function(x, na.rm = TRUE, ...) {
+    qnt <- quantile(x, probs=c(.25, .75), na.rm = na.rm, ...)
+    H <- 1.5 * IQR(x, na.rm = na.rm)
+    y <- x
+    y[x < (qnt[1] - H)] <- NA
+    y[x > (qnt[2] + H)] <- NA
+    y
+  }
+  
+  #epdfPlot(simulate_cost,discrete=T)
+  #epdfPlot(remove_outliers(simulate_cost), discrete=T)
+  mean = mean(simulate_cost)
+  mean_remove_outlier = mean(simulate_cost[is.na(remove_outliers(simulate_cost))==F])
+  
+  # library(doParallel)
+  # #
+  # n_cores <- 4
+  # #
+  # cl <- makeCluster(n_cores)
+  # registerDoParallel(cl)
+  # 
+  # ptm = proc.time()
+  # foreach (j = 1:N,.combine=c) %dopar% {
+  #   cont = TRUE
+  #   road = 0
+  #   iter = 0
+  #   from_node = originNode
+  #   while (cont){
+  #     connected_arcs_set = which(arcs[,1]==from_node)
+  #     prob = condprob[connected_arcs_set]
+  #     arcs_selected = sample(x = connected_arcs_set, 1, replace = TRUE, prob = prob)
+  #     to_node = arcs[arcs_selected,2]
+  #     road = road + arcs[arcs_selected,3]
+  #     if ( (to_node - destNode == 0 ) | (iter>=maxiter)) {cont=FALSE}
+  #     if (iter >= maxiter ){
+  #       print(paste0("Maximum number of iterations reached in simulation", j))}
+  #     from_node = to_node    
+  #     } 
+  #   simulate_cost[j] = road
+  # }
+  # 
+  # stopCluster(cl)
+  
+    
