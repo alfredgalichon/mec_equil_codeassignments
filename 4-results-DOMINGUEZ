@@ -1,0 +1,4 @@
+1. In the taxless benchmark the total number of matched pairs is 30.24873 and the average wage is 5.673105. I used gamma=distance since gamma was not specified
+
+2. In the linear tax case the total number of matched pairs is 30.24871 and the average wage is 5.672802.
+ 
