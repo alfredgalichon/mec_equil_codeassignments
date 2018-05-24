@@ -1,0 +1,3 @@
+For Q1 and Q2 I was not able to install Gurobi to R.
+
+In Q3 my implementation of the Bellman Ford algorithm delivers the optimal path as 452 433 463 468 471.
