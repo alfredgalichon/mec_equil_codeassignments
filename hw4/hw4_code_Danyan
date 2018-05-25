@@ -1,0 +1,195 @@
+### HW for Math+Econ+Code Day 4
+## Danyan Zha
+## May 24, 2018
+
+
+rm(list=ls())
+# Set-up
+n <- 10
+X1 = rep(0.1*c(1:10), n)
+X2 = rep(0.1*c(1:10),each=n)
+X = cbind(X1,X2)
+Y = X
+
+nX = rep(1,dim(X)[1])
+mY = Y[,1]*Y[,2] 
+
+dist = matrix(0,n^2, n^2)
+for (i in 1:n^2){
+  for (j in 1:n^2){
+    dist[i,j]=sqrt(sum((X[i,]-Y[j,])^2))
+  }
+}
+
+alpha_xy = -0.1*dist^2
+gamma_xy = matrix(1,n^2,n^2)
+phi_xy = alpha_xy + gamma_xy
+K = exp(phi_xy/2)
+maxiter = 1000000
+tol = 1e-6
+
+# Q1 Choo-Siow model 
+  cont = TRUE
+  iter = 0
+  ptm=proc.time()
+  
+  B = sqrt(mY) # Initial value of square root of mu_0y
+  while (cont){
+    iter = iter + 1 
+    A = (sqrt( (K %*% B)^2 + 4 * nX)- K %*% B )/2   # square root of mu_x0
+    B = (sqrt((t(K) %*% A)^2 + 4*mY)-t(K) %*% A )/2 # update square root of mu_0y
+    error = max(abs(A * A + A * (K %*% B)-nX)/nX)
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+  }
+  time = proc.time()-ptm
+  
+  mu_xy = c(A) * t(c(B) * t(K))
+  mu_x0 = A^2
+  mu_0y = B^2
+  wage = log(mu_xy)-c(log(mu_x0))-alpha_xy
+  nb_matches = sum(mu_xy)
+  average_wage = sum(mu_xy*wage)/nb_matches
+  
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached with ipfp Method in Choo-Siow model.')
+  } else {
+    print(paste0("IPFP converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Precision error is = ", error))
+    print(paste0("The total number of matched pairs = ", nb_matches))
+    print(paste0("The average wage is = ", average_wage))
+    #print(paste0("Value of the minimization problem = ", val))
+  }
+
+# Q2 Linear tax model
+  Aconstraint <- function(a,i,nX,B,K,theta){
+    a^(2-theta)+a*(K %*% B)[i]-nX[i]
+  }
+  
+  Bconstraint <- function(b,i,mY,A,K,theta){
+    b^((2-theta)/(1-theta))+b*(t(K) %*% A)[i]-mY[i]
+  }
+  
+  theta=0.2
+  K = exp((alpha_xy+(1-theta)*gamma_xy)/(2-theta))
+
+  cont = TRUE
+  iter = 0
+  B = (mY)^((1-theta)/(2-theta)) # Initial value of square root of mu_0y
+  A = c(rep(0, n^2))
+  
+  ptm=proc.time()
+  while (cont){
+    iter = iter + 1 
+    for (i in 1:length(A)){
+      A[i]=uniroot(Aconstraint,i=i,nX=nX, B=B,K=K,theta=theta, interval= c(0,  1), tol=tol)$root
+    }
+    for (i in 1:length(B)){
+      B[i]=uniroot(Bconstraint,i=i,mY=mY, A=A,K=K,theta=theta, interval= c(0,  1), tol=tol)$root
+    }
+    error = max(abs(A^(2-theta) + A * (K %*% B)-nX)/nX)
+    if ((error < tol ) | (iter>=maxiter)){cont=FALSE}
+    print(paste0("iteration = ", iter, "error = ", error))
+  }
+  time = proc.time()-ptm
+
+  mu_xy = c(A) * t(c(B) * t(K))
+  mu_x0 = A^(2-theta)
+  mu_0y = B^((2-theta)/(1-theta))
+  wage = (log(mu_xy)-c(log(mu_x0))-alpha_xy)/(1-theta)
+  nb_matches = sum(mu_xy)
+  average_wage = sum(mu_xy*wage)/nb_matches
+  
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached with ipfp Method in Linear tax model.')
+  } else {
+    print(paste0("Linear tax model"))
+    print(paste0("IPFP converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Precision error is = ", error))
+    print(paste0("The total number of matched pairs = ", nb_matches))
+    print(paste0("The average wage is = ", average_wage))
+    print(paste0("The average payoff to workers is = ", (1-theta)*average_wage))
+    #print(paste0("Value of the minimization problem = ", val))
+  }
+
+# Q3 progressive tax
+  theta = c(0, 0.2, 0.4)
+  w = c(0,-theta[2]*0.1+0.1, -theta[3]*0.2+0.18)
+  
+  K1 = exp((alpha_xy+gamma_xy)/2)
+  K2 = exp((alpha_xy+w[2]+(1-theta[2])*gamma_xy)/(2-theta[2]))
+  K3 = exp((alpha_xy+w[3]+(1-theta[3])*gamma_xy)/(2-theta[3]))
+  K = array(c(K1, K2, K3), dim = c(n^2, n^2, 3))
+  
+  cont = TRUE
+  iter = 0
+  Ax <- function(x,theta){x^(1/(2-theta))}
+  By <- function(y,theta){y^((1-theta)/(2-theta))}
+  
+  Aconstraint_progressive <- function(a,i,nX,mu0y,K,theta){
+    muxy = matrix(0,n^2,length(theta))
+    for (j in 1:length(theta)){
+      muxy[,j] = Ax(a,theta[j])*(K[i,,j])*By(mu0y,theta[j])
+    }
+    mu = apply(muxy,1,min)
+    return(a+sum(mu)-nX[i])
+  }
+  
+  Bconstraint_progressive <- function(b,i,mY,mux0,K,theta){
+    muxy = matrix(0,n^2,length(theta))
+    for (j in 1:length(theta)){
+      muxy[,j] = By(b,theta[j])*(K[,i,j])*Ax(mux0,theta[j])
+    }
+    mu = apply(muxy,1,min)
+    return(b+sum(mu)-mY[i])
+  }
+  
+  mu0y <- mY # Initial value of square root of mu_0y
+  mux0 = c(rep(0, n^2))
+
+  ptm=proc.time()
+  while (cont){
+    iter = iter + 1 
+    for (i in 1:length(mux0)){
+      mux0[i]=uniroot(Aconstraint_progressive,i=i,nX=nX, mu0y=mu0y, K=K,theta=theta, interval= c(0,  1), tol=tol)$root
+    }
+    
+    for (i in 1:length(mu0y)){
+      mu0y[i]=uniroot(Bconstraint_progressive,i=i,mY=mY, mux0=mux0, K=K,theta=theta, interval= c(0,  1), tol=tol)$root
+    }
+    
+    error = rep(0, length(mux0))
+    for (i in 1:length(mux0)){
+      error[i] = Aconstraint_progressive(mux0[i],i=i,nX=nX,mu0y=mu0y, K=K,theta=theta)
+    }
+    
+    if ( (max(abs(error/nX)) < tol) | (iter>=maxiter)){cont=FALSE}
+    #print(paste0("iteration = ", iter, "error = ", error))
+  }
+  time = proc.time()-ptm
+
+  muxy_array = array(0, c(n^2, n^2, length(theta)))
+  for (j in 1:length(theta)) {
+    muxy_array[,,j] = t((t(K[,,j]))*By(mu0y,theta[j])) * Ax(mux0,theta[j])
+  }  
+  muxy = apply(muxy_array,c(1,2),min)
+  index = apply(muxy_array,c(1,2),which.min)
+  wage = gamma_xy-((log(muxy)-c(log(mu0y))))
+  nb_matches = sum(mu_xy)
+  average_wage = sum(mu_xy*wage)/nb_matches
+  
+  if (iter >= maxiter ) 
+  {print('Maximum number of iterations reached with ipfp Method in progressive tax model.')
+  } else {
+    print(paste0("Progressive tax model"))
+    print(paste0("IPFP converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Precision error is = ", max(abs(error/nX))))
+    print(paste0("The total number of matched pairs = ", nb_matches))
+    print(paste0("The average wage is = ", average_wage))
+    #print(paste0("Value of the minimization problem = ", val))
+  }
+  
+# Q4 Public goods
+  
+
+
+
