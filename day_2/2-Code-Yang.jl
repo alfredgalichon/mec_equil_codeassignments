@@ -27,7 +27,7 @@
 
   <meta name="viewport" content="width=device-width">
   
-  <title>mec_equil_codeassignments/surgeSolve.jl at origin/ron · rnyang/mec_equil_codeassignments</title>
+  <title>mec_equil_codeassignments/2-Code-Yang.jl at origin/ron · rnyang/mec_equil_codeassignments</title>
     <meta name="description" content="GitHub is where people build software. More than 27 million people use GitHub to discover, fork, and contribute to over 80 million projects.">
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
   <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
@@ -37,10 +37,10 @@
     <meta property="og:image" content="https://avatars3.githubusercontent.com/u/1072811?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="rnyang/mec_equil_codeassignments" /><meta property="og:url" content="https://github.com/rnyang/mec_equil_codeassignments" /><meta property="og:description" content="mec_equil_codeassignments - coding assignments for math+econ+code on Walrasian equilibrium " />
 
   <link rel="assets" href="https://assets-cdn.github.com/">
-  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjYyNDQyMjI2OjUwMGFhYWViZDE3MmRkZjU4YTNjODMyZTAxZmEwZjZmMDNmODg0YjZhOGJiZDk3ZjZmNmM2OWY4YzFjMDNhNTQ=--91e6639bdeb9ead6f80bf7a3daca1b097d0a7fb0">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjYyNDQyMjI2Ojg4MGIzYWYzNmQ5NjgzYTc1NGE0Mzg3NmY5M2FhMDg2YThiNWYzMmI0NjYzYWY0MDJkNDYwNjMzMmZmZjdjMzY=--19e1dca93459528f5c77dea05e949e8790865d8f">
   <meta name="pjax-timeout" content="1000">
   <link rel="sudo-modal" href="/sessions/sudo_modal">
-  <meta name="request-id" content="A0CB:02AC:2B607CC:4E86E85:5B09E50E" data-pjax-transient>
+  <meta name="request-id" content="8283:02AA:159E166:29BC1CA:5B09E3BA" data-pjax-transient>
 
 
   
@@ -52,7 +52,7 @@
   <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
     <meta name="google-analytics" content="UA-3769691-2">
 
-<meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="A0CB:02AC:2B607CC:4E86E85:5B09E50E" /><meta name="octolytics-dimension-region_edge" content="iad" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-actor-id" content="16355553" /><meta name="octolytics-actor-login" content="alfredgalichon" /><meta name="octolytics-actor-hash" content="e7f8dff0ea68595483fb96891aa744c0bbe9f469956a222912772cf947ea6580" />
+<meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="8283:02AA:159E166:29BC1CA:5B09E3BA" /><meta name="octolytics-dimension-region_edge" content="iad" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-actor-id" content="16355553" /><meta name="octolytics-actor-login" content="alfredgalichon" /><meta name="octolytics-actor-hash" content="e7f8dff0ea68595483fb96891aa744c0bbe9f469956a222912772cf947ea6580" />
 <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
 
 
@@ -67,9 +67,9 @@
     <meta name="user-login" content="alfredgalichon">
 
       <meta name="expected-hostname" content="github.com">
-    <meta name="js-proxy-site-detection-payload" content="OGU5ZWE2OGU5NzAzMTllMWE3NTgwZDBjZTJhMDg4MDEwMzJiM2MwN2M3OTg0NzhhY2YzODBkOWZjNjViZTkzYXx7InJlbW90ZV9hZGRyZXNzIjoiNjQuNjEuNzAuMTQiLCJyZXF1ZXN0X2lkIjoiQTBDQjowMkFDOjJCNjA3Q0M6NEU4NkU4NTo1QjA5RTUwRSIsInRpbWVzdGFtcCI6MTUyNzM3NTEzNywiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+    <meta name="js-proxy-site-detection-payload" content="ZjgzZDg4YjY2NzI0YjI0YzgyYmE2NjcxNzJmYTJiYzM2M2JiOWRlNThhZTExZTI0MjBiMzQ3ZjJhNGFmN2Q1Nnx7InJlbW90ZV9hZGRyZXNzIjoiNjQuNjEuNzAuMTQiLCJyZXF1ZXN0X2lkIjoiODI4MzowMkFBOjE1OUUxNjY6MjlCQzFDQTo1QjA5RTNCQSIsInRpbWVzdGFtcCI6MTUyNzM3NDc4MiwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
 
-    <meta name="enabled-features" content="LOG_ACCESSIBILITY,UNIVERSE_BANNER,FREE_TRIALS,MARKETPLACE_INSIGHTS,MARKETPLACE_INSIGHTS_CONVERSION_PERCENTAGES,JUMP_TO">
+    <meta name="enabled-features" content="UNIVERSE_BANNER,FREE_TRIALS,MARKETPLACE_INSIGHTS,MARKETPLACE_INSIGHTS_CONVERSION_PERCENTAGES,JUMP_TO">
 
   <meta name="html-safe-nonce" content="b7095e532c91051ff0c56d2b3decb7c8f21b165c">
 
@@ -84,7 +84,7 @@
   <meta name="octolytics-dimension-user_id" content="1072811" /><meta name="octolytics-dimension-user_login" content="rnyang" /><meta name="octolytics-dimension-repository_id" content="134286004" /><meta name="octolytics-dimension-repository_nwo" content="rnyang/mec_equil_codeassignments" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="true" /><meta name="octolytics-dimension-repository_parent_id" content="134266043" /><meta name="octolytics-dimension-repository_parent_nwo" content="alfredgalichon/mec_equil_codeassignments" /><meta name="octolytics-dimension-repository_network_root_id" content="134266043" /><meta name="octolytics-dimension-repository_network_root_nwo" content="alfredgalichon/mec_equil_codeassignments" /><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false" />
 
 
-    <link rel="canonical" href="https://github.com/rnyang/mec_equil_codeassignments/blob/origin/ron/day1/ronyang/surgeSolve.jl" data-pjax-transient>
+    <link rel="canonical" href="https://github.com/rnyang/mec_equil_codeassignments/blob/origin/ron/day2/2-Code-Yang.jl" data-pjax-transient>
 
 
   <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
@@ -145,7 +145,7 @@
           aria-label="Search this repository"
           data-unscoped-placeholder="Search or jump to…"
           data-scoped-placeholder="Search or jump to…"
-          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=kcN8qnYNRaSDzBPqWSPQZT183SG5E97CgPqP0Iru6MbtBNEJQ4sfn7m2oXp+vaNVGTUMPgg0R0OpwUnzd9RYpw=="
+          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=3RFUg3LPBqQV9eU9qKSqtRAS4MCreob3s2K2NHBFE8eh1vkgR0lcny+PV62POtmFNFsx3xpdH3aaWXAXjX+jpg=="
           spellcheck="false"
           autocomplete="off"
           autocapitalize="off"
@@ -297,7 +297,7 @@
           Settings
         </a></li>
 
-        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Unk/JrEZTlIAuPBhMc9Gps7g74X8jog6cKEip8FFuWryFZV+04hHoeD+Yz2juhVudFLAOEpS1SbbuHBiBPL4sg==" />
+        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="msycedGVEKyMLSPmZ5VEq2SRBb21zEOiCs98FSH2zGY6oDYhswQZX2xrsLr14Bdj3iMqAAMQHr6h1i7Q5EGNvg==" />
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -309,7 +309,7 @@
 
 
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="sr-only right-0" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Qulq2KrCOpF5shRZyZfysmnuhSSR7QcYYXvwVXXCfu/ihcCAyFMzYpn0hwVb4qF601yqmScxWgTKYqKQsHU/Nw==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="sr-only right-0" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="LZe6iQZSCXRnkOW8xnCP2I3bCdYwSKAQLqmf30rdegqN+xDRZMMAh4fWduBUBdwQN2kma4aU/QyFsM0aj2o70g==" />
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -345,7 +345,7 @@
 
       <ul class="pagehead-actions">
   <li>
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-autosubmit="true" data-remote="true" class="js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="7VkIZzpjXHpY9cXiZGam39ThShON7iG/eLun1nWIkVpsm4+eHVjVwoR9pDTuUf2YCZx1Qx8iiy1cIav/wO4mnw==" />      <input type="hidden" name="repository_id" id="repository_id" value="134286004" class="form-control" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-autosubmit="true" data-remote="true" class="js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="YxSLPq9SYpIz2kye0rp9yfReEKihcMst71yv24I+4Ffi1gzHiGnrKu9SLUhYjSaOKSMv+DO8Yb/LxqPyN1hXkg==" />      <input type="hidden" name="repository_id" id="repository_id" value="134286004" class="form-control" />
 
         <div class="select-menu js-menu-container js-select-menu">
           <a href="/rnyang/mec_equil_codeassignments/subscription"
@@ -425,7 +425,7 @@
   <li>
     
   <div class="js-toggler-container js-social-container starring-container ">
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/rnyang/mec_equil_codeassignments/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="FV7aW1b4xGOlH/PjOTfMnYbLK8B9ROW+X3XzpO+3jyXbWC06cVOSwwDiAYgQi9q7sydupT7C2SmFtU3mD7DwMA==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/rnyang/mec_equil_codeassignments/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="eR1VhCGMEf5XGa+vaKgt4uYsOzoTe7/DUEW3hnPPf6e3G6LlBidHXvLkXcRBFDvE08B+X1D9g1SKhQnEk8gAsg==" />
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -440,7 +440,7 @@
           0
         </a>
 </form>
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/rnyang/mec_equil_codeassignments/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="C8YUTeJfZ8T8A72uAM6RzSsPkNTJpYIOs9OkrHf5ZdsU0mNn6i1zaz32L+2uN7TqcTfaS0mthyP6p58Kwr3J9Q==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/rnyang/mec_equil_codeassignments/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="2VYtbw5R45IqeRa8n4jCTMaUtIG0xpQ+VcVvJbnzcRvGQlpFBiP3PeuMhP8xcedrnKz+HjTOkRMcsVSDDLfdNQ==" />
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -543,9 +543,9 @@
   <div class="repository-content ">
 
     
-  <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/rnyang/mec_equil_codeassignments/blob/39d261458cd935ede0c19b2b12ddda102ee563cf/day1/ronyang/surgeSolve.jl">Permalink</a>
+  <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/rnyang/mec_equil_codeassignments/blob/39d261458cd935ede0c19b2b12ddda102ee563cf/day2/2-Code-Yang.jl">Permalink</a>
 
-  <!-- blob contrib key: blob_contributors:v21:6a4347f04e44297d149f087761ea569f -->
+  <!-- blob contrib key: blob_contributors:v21:9140696d4407fe70fb2d483e1add7eb7 -->
 
   <div class="file-navigation">
     
@@ -587,7 +587,7 @@
 
 
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/rnyang/mec_equil_codeassignments/blob/master/day1/ronyang/surgeSolve.jl"
+               href="/rnyang/mec_equil_codeassignments/blob/master/day2/2-Code-Yang.jl"
                data-name="master"
                data-skip-pjax="true"
                rel="nofollow">
@@ -597,7 +597,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open selected"
-               href="/rnyang/mec_equil_codeassignments/blob/origin/ron/day1/ronyang/surgeSolve.jl"
+               href="/rnyang/mec_equil_codeassignments/blob/origin/ron/day2/2-Code-Yang.jl"
                data-name="origin/ron"
                data-skip-pjax="true"
                rel="nofollow">
@@ -607,7 +607,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/rnyang/mec_equil_codeassignments/blob/ron/day1/ronyang/surgeSolve.jl"
+               href="/rnyang/mec_equil_codeassignments/blob/ron/day2/2-Code-Yang.jl"
                data-name="ron"
                data-skip-pjax="true"
                rel="nofollow">
@@ -646,12 +646,12 @@
       </clipboard-copy>
     </div>
     <div id="blob-path" class="breadcrumb">
-      <span class="repo-root js-repo-root"><span class="js-path-segment"><a data-pjax="true" href="/rnyang/mec_equil_codeassignments/tree/origin/ron"><span>mec_equil_codeassignments</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a data-pjax="true" href="/rnyang/mec_equil_codeassignments/tree/origin/ron/day1"><span>day1</span></a></span><span class="separator">/</span><span class="js-path-segment"><a data-pjax="true" href="/rnyang/mec_equil_codeassignments/tree/origin/ron/day1/ronyang"><span>ronyang</span></a></span><span class="separator">/</span><strong class="final-path">surgeSolve.jl</strong>
+      <span class="repo-root js-repo-root"><span class="js-path-segment"><a data-pjax="true" href="/rnyang/mec_equil_codeassignments/tree/origin/ron"><span>mec_equil_codeassignments</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a data-pjax="true" href="/rnyang/mec_equil_codeassignments/tree/origin/ron/day2"><span>day2</span></a></span><span class="separator">/</span><strong class="final-path">2-Code-Yang.jl</strong>
     </div>
   </div>
 
 
-  <include-fragment src="/rnyang/mec_equil_codeassignments/contributors/origin/ron/day1/ronyang/surgeSolve.jl" class="commit-tease">
+  <include-fragment src="/rnyang/mec_equil_codeassignments/contributors/origin/ron/day2/2-Code-Yang.jl" class="commit-tease">
     <div>
       Fetching contributors&hellip;
     </div>
@@ -668,25 +668,25 @@
   <div class="file-actions">
 
     <div class="BtnGroup">
-      <a id="raw-url" class="btn btn-sm BtnGroup-item" href="/rnyang/mec_equil_codeassignments/raw/origin/ron/day1/ronyang/surgeSolve.jl">Raw</a>
-        <a class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b" href="/rnyang/mec_equil_codeassignments/blame/origin/ron/day1/ronyang/surgeSolve.jl">Blame</a>
-      <a rel="nofollow" class="btn btn-sm BtnGroup-item" href="/rnyang/mec_equil_codeassignments/commits/origin/ron/day1/ronyang/surgeSolve.jl">History</a>
+      <a id="raw-url" class="btn btn-sm BtnGroup-item" href="/rnyang/mec_equil_codeassignments/raw/origin/ron/day2/2-Code-Yang.jl">Raw</a>
+        <a class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b" href="/rnyang/mec_equil_codeassignments/blame/origin/ron/day2/2-Code-Yang.jl">Blame</a>
+      <a rel="nofollow" class="btn btn-sm BtnGroup-item" href="/rnyang/mec_equil_codeassignments/commits/origin/ron/day2/2-Code-Yang.jl">History</a>
     </div>
 
         <a class="btn-octicon tooltipped tooltipped-nw"
-           href="github-mac://openRepo/https://github.com/rnyang/mec_equil_codeassignments?branch=origin%2Fron&amp;filepath=day1%2Fronyang%2FsurgeSolve.jl"
+           href="github-mac://openRepo/https://github.com/rnyang/mec_equil_codeassignments?branch=origin%2Fron&amp;filepath=day2%2F2-Code-Yang.jl"
            aria-label="Open this file in GitHub Desktop"
            data-ga-click="Repository, open with desktop, type:windows">
             <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
         </a>
 
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/rnyang/mec_equil_codeassignments/edit/origin/ron/day1/ronyang/surgeSolve.jl" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="wp1Nd8Qu13S51ugjVVjbStuEAOQO3FY+kpSc0WJCU7R+jXAWRPwVpIE92vjxbaa4ScJIojGgzcIMaNgiNBBbhg==" />
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/rnyang/mec_equil_codeassignments/edit/origin/ron/day2/2-Code-Yang.jl" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="aBQpGYbQDgTnDiS5dABF60UPhQCcF1xRP1U8kIbuCXsHaO6Nk8gJaJjMoAOqEJjbZ6AohrCqj7W9vnbv9rBEJg==" />
             <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
               aria-label="Edit this file" data-hotkey="e" data-disable-with>
               <svg class="octicon octicon-pencil" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
             </button>
 </form>
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/rnyang/mec_equil_codeassignments/delete/origin/ron/day1/ronyang/surgeSolve.jl" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="nu0DliKoWcX6vg1pgbfCZ+GEgaU9CDumktFnwVWoabOLtJYJfMzzwM/KDWaLqFSWti1Smt4o4aMywKVb/h/xTA==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/rnyang/mec_equil_codeassignments/delete/origin/ron/day2/2-Code-Yang.jl" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="xxs2IEe06CdSGCJXJfLiWHUcq5rQEgWMb1f/5QeknmWc9jvLwfEr5Klx0fYrr8py4uGTzVZxF4jDMFWuDeO9tw==" />
           <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
             aria-label="Delete this file" data-disable-with>
             <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
@@ -694,9 +694,9 @@
 </form>  </div>
 
   <div class="file-info">
-      238 lines (175 sloc)
+      328 lines (244 sloc)
       <span class="file-info-divider"></span>
-    5.08 KB
+    6.31 KB
   </div>
 </div>
 
@@ -706,7 +706,7 @@
       <table class="highlight tab-size js-file-line-container" data-tab-size="8">
       <tr>
         <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
-        <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">using</span> Roots</td>
+        <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">using</span> Distributions</td>
       </tr>
       <tr>
         <td id="L2" class="blob-num js-line-number" data-line-number="2"></td>
@@ -715,16 +715,15 @@
       </tr>
       <tr>
         <td id="L3" class="blob-num js-line-number" data-line-number="3"></td>
-        <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Code to optimize using each method and helpers</span></td>
+        <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>##############</span></td>
       </tr>
       <tr>
         <td id="L4" class="blob-num js-line-number" data-line-number="4"></td>
-        <td id="LC4" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Model Setup #</span></td>
       </tr>
       <tr>
         <td id="L5" class="blob-num js-line-number" data-line-number="5"></td>
-        <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">include</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>surgeHelper.jl<span class="pl-pds">&quot;</span></span>)</td>
+        <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>##############</span></td>
       </tr>
       <tr>
         <td id="L6" class="blob-num js-line-number" data-line-number="6"></td>
@@ -733,53 +732,53 @@
       </tr>
       <tr>
         <td id="L7" class="blob-num js-line-number" data-line-number="7"></td>
-        <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###################</span></td>
+        <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Set up grids</span></td>
       </tr>
       <tr>
         <td id="L8" class="blob-num js-line-number" data-line-number="8"></td>
-        <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> gradient descent #</span></td>
+        <td id="LC8" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L9" class="blob-num js-line-number" data-line-number="9"></td>
-        <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###################</span></td>
+        <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Passengers</span></td>
       </tr>
       <tr>
         <td id="L10" class="blob-num js-line-number" data-line-number="10"></td>
-        <td id="LC10" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC10" class="blob-code blob-code-inner js-file-line">nx <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L11" class="blob-num js-line-number" data-line-number="11"></td>
-        <td id="LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Gradient of objective W = excess supply function</span></td>
-      </tr>
-      <tr>
-        <td id="L12" class="blob-num js-line-number" data-line-number="12"></td>
-        <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> so ∇W = S - D</span></td>
-      </tr>
-      <tr>
-        <td id="L13" class="blob-num js-line-number" data-line-number="13"></td>
-        <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">Wg</span>(p, CYZ, my, UXZ, nx)</td>
-      </tr>
-      <tr>
-        <td id="L14" class="blob-num js-line-number" data-line-number="14"></td>
-        <td id="LC14" class="blob-code blob-code-inner js-file-line">    E <span class="pl-k">=</span> <span class="pl-c1">supply</span>(p, CYZ, my) <span class="pl-k">-</span> <span class="pl-c1">demand</span>(p, UXZ, nx)</td>
-      </tr>
-      <tr>
-        <td id="L15" class="blob-num js-line-number" data-line-number="15"></td>
-        <td id="LC15" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> E</td>
-      </tr>
-      <tr>
-        <td id="L16" class="blob-num js-line-number" data-line-number="16"></td>
-        <td id="LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
-      </tr>
-      <tr>
-        <td id="L17" class="blob-num js-line-number" data-line-number="17"></td>
-        <td id="LC17" class="blob-code blob-code-inner js-file-line">
+        <td id="LC11" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Drivers</span></td>
+      </tr>
+      <tr>
+        <td id="L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="LC13" class="blob-code blob-code-inner js-file-line">my <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="LC14" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+      </tr>
+      <tr>
+        <td id="L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="LC15" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+      </tr>
+      <tr>
+        <td id="L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="LC16" class="blob-code blob-code-inner js-file-line">        my[i,j] <span class="pl-k">=</span> (i<span class="pl-k">/</span><span class="pl-c1">10</span>) <span class="pl-k">*</span> (j<span class="pl-k">/</span><span class="pl-c1">10</span>)</td>
+      </tr>
+      <tr>
+        <td id="L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="LC17" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+      </tr>
+      <tr>
         <td id="L18" class="blob-num js-line-number" data-line-number="18"></td>
-        <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">gradientDescent</span>(CYZ, my, UXZ, nx, precision)</td>
+        <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L19" class="blob-num js-line-number" data-line-number="19"></td>
@@ -788,39 +787,41 @@
       </tr>
       <tr>
         <td id="L20" class="blob-num js-line-number" data-line-number="20"></td>
-        <td id="LC20" class="blob-code blob-code-inner js-file-line">    pCurr <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Utility of passengers</span></td>
       </tr>
       <tr>
         <td id="L21" class="blob-num js-line-number" data-line-number="21"></td>
-        <td id="LC21" class="blob-code blob-code-inner js-file-line">    pNext <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> α(x<span class="pl-k">::</span><span class="pl-c1">Array{Int,1}</span>,z<span class="pl-k">::</span><span class="pl-c1">Array{Int,1}</span>)</td>
       </tr>
       <tr>
         <td id="L22" class="blob-num js-line-number" data-line-number="22"></td>
-        <td id="LC22" class="blob-code blob-code-inner js-file-line">    ε <span class="pl-k">=</span> <span class="pl-c1">0.2</span></td>
+        <td id="LC22" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-k">-</span><span class="pl-c1">1</span><span class="pl-k">*</span>(<span class="pl-c1">norm</span>((x<span class="pl-k">-</span>z)<span class="pl-k">/</span><span class="pl-c1">10</span>,<span class="pl-c1">2</span>) <span class="pl-k">&gt;=</span> <span class="pl-c1">0.5</span>)</td>
       </tr>
       <tr>
         <td id="L23" class="blob-num js-line-number" data-line-number="23"></td>
-        <td id="LC23" class="blob-code blob-code-inner js-file-line">    itSGD <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+        <td id="LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L24" class="blob-num js-line-number" data-line-number="24"></td>
-        <td id="LC24" class="blob-code blob-code-inner js-file-line">    </td>
+        <td id="LC24" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L25" class="blob-num js-line-number" data-line-number="25"></td>
-        <td id="LC25" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">tic</span>()</td>
+        <td id="LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Compute Preference Terms</span></td>
       </tr>
       <tr>
         <td id="L26" class="blob-num js-line-number" data-line-number="26"></td>
-        <td id="LC26" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10000</span></td>
+        <td id="LC26" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L27" class="blob-num js-line-number" data-line-number="27"></td>
-        <td id="LC27" class="blob-code blob-code-inner js-file-line">        pNext <span class="pl-k">=</span> pCurr <span class="pl-k">-</span> ε<span class="pl-k">*</span><span class="pl-c1">Wg</span>(pCurr, CYZ, my, UXZ, nx)</td>
+        <td id="LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> α(x,y) = α(xi,xj,yi,yj)</span></td>
       </tr>
       <tr>
         <td id="L28" class="blob-num js-line-number" data-line-number="28"></td>
-        <td id="LC28" class="blob-code blob-code-inner js-file-line">        pCurr <span class="pl-k">=</span> pNext</td>
+        <td id="LC28" class="blob-code blob-code-inner js-file-line">αxy <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L29" class="blob-num js-line-number" data-line-number="29"></td>
@@ -829,57 +830,56 @@
       </tr>
       <tr>
         <td id="L30" class="blob-num js-line-number" data-line-number="30"></td>
-        <td id="LC30" class="blob-code blob-code-inner js-file-line">        precCurr <span class="pl-k">=</span> <span class="pl-c1">prec</span>(<span class="pl-c1">supply</span>(pCurr,CYZ,my), <span class="pl-c1">demand</span>(pCurr,UXZ,nx))</td>
+        <td id="LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> γ(x,y) = γ(xi,xj,yi,yj)</span></td>
       </tr>
       <tr>
         <td id="L31" class="blob-num js-line-number" data-line-number="31"></td>
-        <td id="LC31" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> precCurr <span class="pl-k">&lt;</span> precision</td>
+        <td id="LC31" class="blob-code blob-code-inner js-file-line">γxy <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L32" class="blob-num js-line-number" data-line-number="32"></td>
-        <td id="LC32" class="blob-code blob-code-inner js-file-line">            itSGD <span class="pl-k">=</span> it</td>
+        <td id="LC32" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L33" class="blob-num js-line-number" data-line-number="33"></td>
-        <td id="LC33" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">break</span></td>
+        <td id="LC33" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L34" class="blob-num js-line-number" data-line-number="34"></td>
-        <td id="LC34" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC34" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> j0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L35" class="blob-num js-line-number" data-line-number="35"></td>
-        <td id="LC35" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+        <td id="LC35" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i1 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L36" class="blob-num js-line-number" data-line-number="36"></td>
-        <td id="LC36" class="blob-code blob-code-inner js-file-line">    timeSGD <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
+        <td id="LC36" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">for</span> j1 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L37" class="blob-num js-line-number" data-line-number="37"></td>
-        <td id="LC37" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC37" class="blob-code blob-code-inner js-file-line">                αxy[i0,j0,i1,j1] <span class="pl-k">=</span> α([i0,j0],[i1,j1])</td>
       </tr>
       <tr>
         <td id="L38" class="blob-num js-line-number" data-line-number="38"></td>
-        <td id="LC38" class="blob-code blob-code-inner js-file-line">    pGD <span class="pl-k">=</span> pCurr;</td>
+        <td id="LC38" class="blob-code blob-code-inner js-file-line">                γxy[i0,j0,i1,j1] <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">norm</span>([i0,j0]<span class="pl-k">-</span>[i1,j1],<span class="pl-c1">2</span>) <span class="pl-k">/</span> <span class="pl-c1">10.</span></td>
       </tr>
       <tr>
         <td id="L39" class="blob-num js-line-number" data-line-number="39"></td>
-        <td id="LC39" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC39" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L40" class="blob-num js-line-number" data-line-number="40"></td>
-        <td id="LC40" class="blob-code blob-code-inner js-file-line">    SGD <span class="pl-k">=</span> <span class="pl-c1">supply</span>(pGD, CYZ, my)</td>
+        <td id="LC40" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L41" class="blob-num js-line-number" data-line-number="41"></td>
-        <td id="LC41" class="blob-code blob-code-inner js-file-line">    DGD <span class="pl-k">=</span> <span class="pl-c1">demand</span>(pGD, UXZ, nx)</td>
+        <td id="LC41" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L42" class="blob-num js-line-number" data-line-number="42"></td>
-        <td id="LC42" class="blob-code blob-code-inner js-file-line">    precSGD <span class="pl-k">=</span> <span class="pl-c1">prec</span>(SGD, DGD)</td>
+        <td id="LC42" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L43" class="blob-num js-line-number" data-line-number="43"></td>
@@ -888,45 +888,45 @@
       </tr>
       <tr>
         <td id="L44" class="blob-num js-line-number" data-line-number="44"></td>
-        <td id="LC44" class="blob-code blob-code-inner js-file-line">    trSGD <span class="pl-k">=</span> <span class="pl-c1">totalRides</span>(SGD)</td>
+        <td id="LC44" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###############</span></td>
       </tr>
       <tr>
         <td id="L45" class="blob-num js-line-number" data-line-number="45"></td>
-        <td id="LC45" class="blob-code blob-code-inner js-file-line">    avgprcSGD <span class="pl-k">=</span> <span class="pl-c1">averagePrice</span>(SGD,pGD)</td>
+        <td id="LC45" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Gale-Shapley #</span></td>
       </tr>
       <tr>
         <td id="L46" class="blob-num js-line-number" data-line-number="46"></td>
-        <td id="LC46" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC46" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###############</span></td>
       </tr>
       <tr>
         <td id="L47" class="blob-num js-line-number" data-line-number="47"></td>
-        <td id="LC47" class="blob-code blob-code-inner js-file-line">    GDstats <span class="pl-k">=</span> [precSGD, trSGD, avgprcSGD, itSGD, timeSGD]</td>
-      </tr>
-      <tr>
-        <td id="L48" class="blob-num js-line-number" data-line-number="48"></td>
-        <td id="LC48" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> GDstats</td>
-      </tr>
-      <tr>
-        <td id="L49" class="blob-num js-line-number" data-line-number="49"></td>
-        <td id="LC49" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
-      </tr>
-      <tr>
-        <td id="L50" class="blob-num js-line-number" data-line-number="50"></td>
-        <td id="LC50" class="blob-code blob-code-inner js-file-line">
+        <td id="LC47" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="LC48" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> For each x, find μxy (10x10) such that</span></td>
+      </tr>
+      <tr>
+        <td id="L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="LC49" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> 1. μxyP &lt;= μxyA</span></td>
+      </tr>
+      <tr>
+        <td id="L50" class="blob-num js-line-number" data-line-number="50"></td>
+        <td id="LC50" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> 2. sum(μxyP) &lt;= nx</span></td>
+      </tr>
+      <tr>
         <td id="L51" class="blob-num js-line-number" data-line-number="51"></td>
-        <td id="LC51" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>#################</span></td>
+        <td id="LC51" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L52" class="blob-num js-line-number" data-line-number="52"></td>
-        <td id="LC52" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Newton Descent #</span></td>
+        <td id="LC52" class="blob-code blob-code-inner js-file-line">xi <span class="pl-k">=</span> <span class="pl-c1">1</span></td>
       </tr>
       <tr>
         <td id="L53" class="blob-num js-line-number" data-line-number="53"></td>
-        <td id="LC53" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>#################</span></td>
+        <td id="LC53" class="blob-code blob-code-inner js-file-line">xj <span class="pl-k">=</span> <span class="pl-c1">1</span></td>
       </tr>
       <tr>
         <td id="L54" class="blob-num js-line-number" data-line-number="54"></td>
@@ -935,186 +935,185 @@
       </tr>
       <tr>
         <td id="L55" class="blob-num js-line-number" data-line-number="55"></td>
-        <td id="LC55" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC55" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">proposalObjective</span>(μxyP, μxyA, αxy, nx)</td>
       </tr>
       <tr>
         <td id="L56" class="blob-num js-line-number" data-line-number="56"></td>
-        <td id="LC56" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Hessian of objective W</span></td>
+        <td id="LC56" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L57" class="blob-num js-line-number" data-line-number="57"></td>
-        <td id="LC57" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">WH</span>(p, CYZ, my, UXZ, nx)</td>
+        <td id="LC57" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Check proposal is valid</span></td>
       </tr>
       <tr>
         <td id="L58" class="blob-num js-line-number" data-line-number="58"></td>
-        <td id="LC58" class="blob-code blob-code-inner js-file-line">    H <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);</td>
+        <td id="LC58" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-c1">sum</span>(μxyP <span class="pl-k">.&lt;=</span> μxyA) <span class="pl-k">&lt;</span> <span class="pl-c1">100</span></td>
       </tr>
       <tr>
         <td id="L59" class="blob-num js-line-number" data-line-number="59"></td>
-        <td id="LC59" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC59" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">1e6</span></td>
       </tr>
       <tr>
         <td id="L60" class="blob-num js-line-number" data-line-number="60"></td>
-        <td id="LC60" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Compute μyz and μxz terms</span></td>
+        <td id="LC60" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L61" class="blob-num js-line-number" data-line-number="61"></td>
-        <td id="LC61" class="blob-code blob-code-inner js-file-line">    SYZ <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+        <td id="LC61" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L62" class="blob-num js-line-number" data-line-number="62"></td>
-        <td id="LC62" class="blob-code blob-code-inner js-file-line">    DXZ <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+        <td id="LC62" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Check μ is positive</span></td>
       </tr>
       <tr>
         <td id="L63" class="blob-num js-line-number" data-line-number="63"></td>
-        <td id="LC63" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> i0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC63" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-c1">sum</span>(μxyP <span class="pl-k">.&lt;</span> <span class="pl-c1">0</span>) <span class="pl-k">&gt;</span> <span class="pl-c1">0</span></td>
       </tr>
       <tr>
         <td id="L64" class="blob-num js-line-number" data-line-number="64"></td>
-        <td id="LC64" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC64" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">1e6</span></td>
       </tr>
       <tr>
         <td id="L65" class="blob-num js-line-number" data-line-number="65"></td>
-        <td id="LC65" class="blob-code blob-code-inner js-file-line">            SYZ[i0,j0,:,:] <span class="pl-k">=</span> <span class="pl-c1">reshape</span>([<span class="pl-c1">syz</span>(p, CYZ, i0, j0, iz, jz) <span class="pl-k">for</span> iz <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span> <span class="pl-k">for</span> jz <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span>],<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+        <td id="LC65" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L66" class="blob-num js-line-number" data-line-number="66"></td>
-        <td id="LC66" class="blob-code blob-code-inner js-file-line">            DXZ[i0,j0,:,:] <span class="pl-k">=</span> <span class="pl-c1">reshape</span>([<span class="pl-c1">dxz</span>(p, UXZ, i0, j0, iz, jz) <span class="pl-k">for</span> iz <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span> <span class="pl-k">for</span> jz <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span>],<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+        <td id="LC66" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L67" class="blob-num js-line-number" data-line-number="67"></td>
-        <td id="LC67" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC67" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Check feasible count</span></td>
       </tr>
       <tr>
         <td id="L68" class="blob-num js-line-number" data-line-number="68"></td>
-        <td id="LC68" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+        <td id="LC68" class="blob-code blob-code-inner js-file-line">    nMatched <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxyP)</td>
       </tr>
       <tr>
         <td id="L69" class="blob-num js-line-number" data-line-number="69"></td>
-        <td id="LC69" class="blob-code blob-code-inner js-file-line">    </td>
+        <td id="LC69" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> nMatched <span class="pl-k">&gt;</span> nx</td>
       </tr>
       <tr>
         <td id="L70" class="blob-num js-line-number" data-line-number="70"></td>
-        <td id="LC70" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> derivative of W(i1,j1) wrt (i0,j0)</span></td>
+        <td id="LC70" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">1e6</span></td>
       </tr>
       <tr>
         <td id="L71" class="blob-num js-line-number" data-line-number="71"></td>
-        <td id="LC71" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> i0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC71" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L72" class="blob-num js-line-number" data-line-number="72"></td>
-        <td id="LC72" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j0 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC72" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L73" class="blob-num js-line-number" data-line-number="73"></td>
-        <td id="LC73" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC73" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Compute utility</span></td>
       </tr>
       <tr>
         <td id="L74" class="blob-num js-line-number" data-line-number="74"></td>
-        <td id="LC74" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"><span class="pl-c">#</span> supply by each y for z=(i0,j0)</span></td>
+        <td id="LC74" class="blob-code blob-code-inner js-file-line">    matchU <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxyP <span class="pl-k">.*</span> αxy)</td>
       </tr>
       <tr>
         <td id="L75" class="blob-num js-line-number" data-line-number="75"></td>
-        <td id="LC75" class="blob-code blob-code-inner js-file-line">            s0 <span class="pl-k">=</span> SYZ[:,:,i0,j0]</td>
+        <td id="LC75" class="blob-code blob-code-inner js-file-line">    unmatchU <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">2</span><span class="pl-k">*</span>(nx <span class="pl-k">-</span> <span class="pl-c1">sum</span>(μxyP))</td>
       </tr>
       <tr>
         <td id="L76" class="blob-num js-line-number" data-line-number="76"></td>
-        <td id="LC76" class="blob-code blob-code-inner js-file-line">            d0 <span class="pl-k">=</span> DXZ[:,:,i0,j0]</td>
+        <td id="LC76" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-k">-</span>(matchU <span class="pl-k">+</span> unmatchU)</td>
       </tr>
       <tr>
         <td id="L77" class="blob-num js-line-number" data-line-number="77"></td>
-        <td id="LC77" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC77" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L78" class="blob-num js-line-number" data-line-number="78"></td>
-        <td id="LC78" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">for</span> i1 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC78" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L79" class="blob-num js-line-number" data-line-number="79"></td>
-        <td id="LC79" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">for</span> j1 <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC79" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">imax</span>(a)</td>
       </tr>
       <tr>
         <td id="L80" class="blob-num js-line-number" data-line-number="80"></td>
-        <td id="LC80" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC80" class="blob-code blob-code-inner js-file-line">    i,j <span class="pl-k">=</span> <span class="pl-c1">ind2sub</span>(<span class="pl-c1">size</span>(a), <span class="pl-c1">indmax</span>(a));</td>
       </tr>
       <tr>
         <td id="L81" class="blob-num js-line-number" data-line-number="81"></td>
-        <td id="LC81" class="blob-code blob-code-inner js-file-line">                    s1 <span class="pl-k">=</span> SYZ[:,:,i1,j1]</td>
+        <td id="LC81" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> (i,j)</td>
       </tr>
       <tr>
         <td id="L82" class="blob-num js-line-number" data-line-number="82"></td>
-        <td id="LC82" class="blob-code blob-code-inner js-file-line">                    d1 <span class="pl-k">=</span> DXZ[:,:,i1,j1]</td>
+        <td id="LC82" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L83" class="blob-num js-line-number" data-line-number="83"></td>
-        <td id="LC83" class="blob-code blob-code-inner js-file-line">                    </td>
+        <td id="LC83" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L84" class="blob-num js-line-number" data-line-number="84"></td>
-        <td id="LC84" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">if</span> (i0 <span class="pl-k">==</span> i1) <span class="pl-k">&amp;</span> (j0<span class="pl-k">==</span>j1)</td>
+        <td id="LC84" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> proposal for a single x (xi, xj)</span></td>
       </tr>
       <tr>
         <td id="L85" class="blob-num js-line-number" data-line-number="85"></td>
-        <td id="LC85" class="blob-code blob-code-inner js-file-line">                        H[(i0<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span><span class="pl-c1">10</span><span class="pl-k">+</span>j0,(i0<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span><span class="pl-c1">10</span><span class="pl-k">+</span>j0] <span class="pl-k">=</span> <span class="pl-c1">sum</span>(my <span class="pl-k">.*</span> s0 <span class="pl-k">.*</span> (<span class="pl-c1">1</span><span class="pl-k">-</span>s0)) <span class="pl-k">-</span> <span class="pl-c1">sum</span>(nx <span class="pl-k">.*</span> d0 <span class="pl-k">.*</span> (<span class="pl-c1">1</span><span class="pl-k">-</span>d0))</td>
+        <td id="LC85" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">proposalGreedy</span>(μxyAx, αxyx, nxx)</td>
       </tr>
       <tr>
         <td id="L86" class="blob-num js-line-number" data-line-number="86"></td>
-        <td id="LC86" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">else</span></td>
+        <td id="LC86" class="blob-code blob-code-inner js-file-line">    μxyPx <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L87" class="blob-num js-line-number" data-line-number="87"></td>
-        <td id="LC87" class="blob-code blob-code-inner js-file-line">                        H[(i0<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span><span class="pl-c1">10</span><span class="pl-k">+</span>j0,(i1<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span><span class="pl-c1">10</span><span class="pl-k">+</span>j1] <span class="pl-k">=</span> <span class="pl-c1">sum</span>(my <span class="pl-k">.*</span> s0 <span class="pl-k">.*</span> s1) <span class="pl-k">-</span> <span class="pl-c1">sum</span>(nx <span class="pl-k">.*</span> d0 <span class="pl-k">.*</span> d1)</td>
+        <td id="LC87" class="blob-code blob-code-inner js-file-line">    cumQty <span class="pl-k">=</span> <span class="pl-c1">0.</span>;</td>
       </tr>
       <tr>
         <td id="L88" class="blob-num js-line-number" data-line-number="88"></td>
-        <td id="LC88" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">end</span></td>
+        <td id="LC88" class="blob-code blob-code-inner js-file-line">    nIt <span class="pl-k">=</span> <span class="pl-c1">0</span>; <span class="pl-c"><span class="pl-c">#</span> cut off if proposed to everyone</span></td>
       </tr>
       <tr>
         <td id="L89" class="blob-num js-line-number" data-line-number="89"></td>
-        <td id="LC89" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">end</span></td>
+        <td id="LC89" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L90" class="blob-num js-line-number" data-line-number="90"></td>
-        <td id="LC90" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">end</span></td>
+        <td id="LC90" class="blob-code blob-code-inner js-file-line">    tried <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L91" class="blob-num js-line-number" data-line-number="91"></td>
-        <td id="LC91" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC91" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L92" class="blob-num js-line-number" data-line-number="92"></td>
-        <td id="LC92" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+        <td id="LC92" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">while</span> (cumQty <span class="pl-k">&lt;</span> nxx) <span class="pl-k">&amp;</span> (nIt <span class="pl-k">&lt;</span> <span class="pl-c1">100</span>)</td>
       </tr>
       <tr>
         <td id="L93" class="blob-num js-line-number" data-line-number="93"></td>
-        <td id="LC93" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC93" class="blob-code blob-code-inner js-file-line">        </td>
       </tr>
       <tr>
         <td id="L94" class="blob-num js-line-number" data-line-number="94"></td>
-        <td id="LC94" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>H = H + (H - diagm(diag(H)))&#39;;</span></td>
+        <td id="LC94" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Identify best counterparty (not already considered)</span></td>
       </tr>
       <tr>
         <td id="L95" class="blob-num js-line-number" data-line-number="95"></td>
-        <td id="LC95" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> H</td>
+        <td id="LC95" class="blob-code blob-code-inner js-file-line">        iB, jB <span class="pl-k">=</span> <span class="pl-c1">imax</span>(αxyx <span class="pl-k">-</span> <span class="pl-c1">10</span><span class="pl-k">*</span>tried);</td>
       </tr>
       <tr>
         <td id="L96" class="blob-num js-line-number" data-line-number="96"></td>
-        <td id="LC96" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+        <td id="LC96" class="blob-code blob-code-inner js-file-line">        </td>
       </tr>
       <tr>
         <td id="L97" class="blob-num js-line-number" data-line-number="97"></td>
-        <td id="LC97" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC97" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Take maximal amount</span></td>
       </tr>
       <tr>
         <td id="L98" class="blob-num js-line-number" data-line-number="98"></td>
-        <td id="LC98" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">newtonMethod</span>(CYZ, my, UXZ, nx, precision)</td>
+        <td id="LC98" class="blob-code blob-code-inner js-file-line">        μxyPx[iB,jB] <span class="pl-k">=</span> <span class="pl-c1">min</span>(μxyAx[iB,jB], nxx<span class="pl-k">-</span>cumQty);</td>
       </tr>
       <tr>
         <td id="L99" class="blob-num js-line-number" data-line-number="99"></td>
@@ -1123,103 +1122,103 @@
       </tr>
       <tr>
         <td id="L100" class="blob-num js-line-number" data-line-number="100"></td>
-        <td id="LC100" class="blob-code blob-code-inner js-file-line">    pCurr <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">100</span>,<span class="pl-c1">1</span>)<span class="pl-k">*</span><span class="pl-c1">2</span></td>
+        <td id="LC100" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Update cumulative</span></td>
       </tr>
       <tr>
         <td id="L101" class="blob-num js-line-number" data-line-number="101"></td>
-        <td id="LC101" class="blob-code blob-code-inner js-file-line">    pNext <span class="pl-k">=</span> <span class="pl-c1">copy</span>(pCurr)</td>
+        <td id="LC101" class="blob-code blob-code-inner js-file-line">        cumQty <span class="pl-k">+=</span> μxyPx[iB,jB]</td>
       </tr>
       <tr>
         <td id="L102" class="blob-num js-line-number" data-line-number="102"></td>
-        <td id="LC102" class="blob-code blob-code-inner js-file-line">    ε <span class="pl-k">=</span> <span class="pl-c1">0.2</span></td>
+        <td id="LC102" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L103" class="blob-num js-line-number" data-line-number="103"></td>
-        <td id="LC103" class="blob-code blob-code-inner js-file-line">    itND <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+        <td id="LC103" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Update tried</span></td>
       </tr>
       <tr>
         <td id="L104" class="blob-num js-line-number" data-line-number="104"></td>
-        <td id="LC104" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC104" class="blob-code blob-code-inner js-file-line">        tried[iB,jB] <span class="pl-k">=</span> <span class="pl-c1">1.</span>;</td>
       </tr>
       <tr>
         <td id="L105" class="blob-num js-line-number" data-line-number="105"></td>
-        <td id="LC105" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">tic</span>()</td>
+        <td id="LC105" class="blob-code blob-code-inner js-file-line">        </td>
       </tr>
       <tr>
         <td id="L106" class="blob-num js-line-number" data-line-number="106"></td>
-        <td id="LC106" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">1000</span></td>
+        <td id="LC106" class="blob-code blob-code-inner js-file-line">        nIt <span class="pl-k">+=</span> <span class="pl-c1">1</span>;</td>
       </tr>
       <tr>
         <td id="L107" class="blob-num js-line-number" data-line-number="107"></td>
-        <td id="LC107" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC107" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L108" class="blob-num js-line-number" data-line-number="108"></td>
-        <td id="LC108" class="blob-code blob-code-inner js-file-line">        Hess <span class="pl-k">=</span> <span class="pl-c1">WH</span>(<span class="pl-c1">reshape</span>(pCurr,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>), CYZ, my, UXZ, nx);</td>
+        <td id="LC108" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L109" class="blob-num js-line-number" data-line-number="109"></td>
-        <td id="LC109" class="blob-code blob-code-inner js-file-line">        Grad <span class="pl-k">=</span> <span class="pl-c1">reshape</span>(<span class="pl-c1">Wg</span>(<span class="pl-c1">reshape</span>(pCurr,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>), CYZ, my, UXZ, nx),<span class="pl-c1">100</span>,<span class="pl-c1">1</span>);</td>
+        <td id="LC109" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> μxyPx</td>
       </tr>
       <tr>
         <td id="L110" class="blob-num js-line-number" data-line-number="110"></td>
-        <td id="LC110" class="blob-code blob-code-inner js-file-line">        increment <span class="pl-k">=</span> <span class="pl-k">-</span>ε<span class="pl-k">*</span><span class="pl-c1">inv</span>(Hess)<span class="pl-k">*</span>Grad;</td>
+        <td id="LC110" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L111" class="blob-num js-line-number" data-line-number="111"></td>
-        <td id="LC111" class="blob-code blob-code-inner js-file-line">        pNext <span class="pl-k">=</span> pCurr <span class="pl-k">+</span> increment;</td>
+        <td id="LC111" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L112" class="blob-num js-line-number" data-line-number="112"></td>
-        <td id="LC112" class="blob-code blob-code-inner js-file-line">        pCurr <span class="pl-k">=</span> pNext;</td>
+        <td id="LC112" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">proposalIteration</span>(μxyA, αxy, nx)</td>
       </tr>
       <tr>
         <td id="L113" class="blob-num js-line-number" data-line-number="113"></td>
-        <td id="LC113" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>reshape(pCurr,10,10)</span></td>
+        <td id="LC113" class="blob-code blob-code-inner js-file-line">    μxyP <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
       </tr>
       <tr>
         <td id="L114" class="blob-num js-line-number" data-line-number="114"></td>
-        <td id="LC114" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC114" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L115" class="blob-num js-line-number" data-line-number="115"></td>
-        <td id="LC115" class="blob-code blob-code-inner js-file-line">        precCurr <span class="pl-k">=</span> <span class="pl-c1">prec</span>(<span class="pl-c1">supply</span>(<span class="pl-c1">reshape</span>(pCurr,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>),CYZ,my), <span class="pl-c1">demand</span>(<span class="pl-c1">reshape</span>(pCurr,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>),UXZ,nx))</td>
+        <td id="LC115" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> xi <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L116" class="blob-num js-line-number" data-line-number="116"></td>
-        <td id="LC116" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> precCurr <span class="pl-k">&lt;</span> precision</td>
+        <td id="LC116" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> xj <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L117" class="blob-num js-line-number" data-line-number="117"></td>
-        <td id="LC117" class="blob-code blob-code-inner js-file-line">            itND <span class="pl-k">=</span> it</td>
+        <td id="LC117" class="blob-code blob-code-inner js-file-line">            μxyP[xi,xj,:,:] <span class="pl-k">=</span> <span class="pl-c1">proposalGreedy</span>(μxyA[xi,xj,:,:], αxy[xi,xj,:,:], nx[xi,xj])</td>
       </tr>
       <tr>
         <td id="L118" class="blob-num js-line-number" data-line-number="118"></td>
-        <td id="LC118" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">break</span></td>
+        <td id="LC118" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L119" class="blob-num js-line-number" data-line-number="119"></td>
-        <td id="LC119" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC119" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L120" class="blob-num js-line-number" data-line-number="120"></td>
-        <td id="LC120" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+        <td id="LC120" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L121" class="blob-num js-line-number" data-line-number="121"></td>
-        <td id="LC121" class="blob-code blob-code-inner js-file-line">    timeND <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
+        <td id="LC121" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> μxyP</td>
       </tr>
       <tr>
         <td id="L122" class="blob-num js-line-number" data-line-number="122"></td>
-        <td id="LC122" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC122" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L123" class="blob-num js-line-number" data-line-number="123"></td>
-        <td id="LC123" class="blob-code blob-code-inner js-file-line">    pND <span class="pl-k">=</span> <span class="pl-c1">reshape</span>(pCurr,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+        <td id="LC123" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L124" class="blob-num js-line-number" data-line-number="124"></td>
@@ -1228,115 +1227,111 @@
       </tr>
       <tr>
         <td id="L125" class="blob-num js-line-number" data-line-number="125"></td>
-        <td id="LC125" class="blob-code blob-code-inner js-file-line">    SND <span class="pl-k">=</span> <span class="pl-c1">supply</span>(pND, CYZ, my)</td>
+        <td id="LC125" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> engagement for a single y (yi, yj)</span></td>
       </tr>
       <tr>
         <td id="L126" class="blob-num js-line-number" data-line-number="126"></td>
-        <td id="LC126" class="blob-code blob-code-inner js-file-line">    DND <span class="pl-k">=</span> <span class="pl-c1">demand</span>(pND, UXZ, nx)</td>
+        <td id="LC126" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">engagementGreedy</span>(μxyPy, γxyy, myy)</td>
       </tr>
       <tr>
         <td id="L127" class="blob-num js-line-number" data-line-number="127"></td>
-        <td id="LC127" class="blob-code blob-code-inner js-file-line">    precND <span class="pl-k">=</span> <span class="pl-c1">prec</span>(SND, DND)</td>
+        <td id="LC127" class="blob-code blob-code-inner js-file-line">    μxyEy <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L128" class="blob-num js-line-number" data-line-number="128"></td>
-        <td id="LC128" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC128" class="blob-code blob-code-inner js-file-line">    cumQty <span class="pl-k">=</span> <span class="pl-c1">0.</span>;</td>
       </tr>
       <tr>
         <td id="L129" class="blob-num js-line-number" data-line-number="129"></td>
-        <td id="LC129" class="blob-code blob-code-inner js-file-line">    trND <span class="pl-k">=</span> <span class="pl-c1">totalRides</span>(SND)</td>
+        <td id="LC129" class="blob-code blob-code-inner js-file-line">    nIt <span class="pl-k">=</span> <span class="pl-c1">0</span>; <span class="pl-c"><span class="pl-c">#</span> cut off if proposed to everyone</span></td>
       </tr>
       <tr>
         <td id="L130" class="blob-num js-line-number" data-line-number="130"></td>
-        <td id="LC130" class="blob-code blob-code-inner js-file-line">    avgprcND <span class="pl-k">=</span> <span class="pl-c1">averagePrice</span>(SND,pND)</td>
+        <td id="LC130" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L131" class="blob-num js-line-number" data-line-number="131"></td>
-        <td id="LC131" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC131" class="blob-code blob-code-inner js-file-line">    tried <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L132" class="blob-num js-line-number" data-line-number="132"></td>
-        <td id="LC132" class="blob-code blob-code-inner js-file-line">    NDstats <span class="pl-k">=</span> [precND, trND, avgprcND, itND, timeND]</td>
+        <td id="LC132" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L133" class="blob-num js-line-number" data-line-number="133"></td>
-        <td id="LC133" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> NDstats</td>
+        <td id="LC133" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">while</span> (cumQty <span class="pl-k">&lt;</span> myy) <span class="pl-k">&amp;</span> (nIt <span class="pl-k">&lt;</span> <span class="pl-c1">100</span>)</td>
       </tr>
       <tr>
         <td id="L134" class="blob-num js-line-number" data-line-number="134"></td>
-        <td id="LC134" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+        <td id="LC134" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Identify best counterparty</span></td>
       </tr>
       <tr>
         <td id="L135" class="blob-num js-line-number" data-line-number="135"></td>
-        <td id="LC135" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC135" class="blob-code blob-code-inner js-file-line">        iB, jB <span class="pl-k">=</span> <span class="pl-c1">imax</span>(γxyy <span class="pl-k">-</span> <span class="pl-c1">10</span><span class="pl-k">*</span>tried);</td>
       </tr>
       <tr>
         <td id="L136" class="blob-num js-line-number" data-line-number="136"></td>
-        <td id="LC136" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC136" class="blob-code blob-code-inner js-file-line">        </td>
       </tr>
       <tr>
         <td id="L137" class="blob-num js-line-number" data-line-number="137"></td>
-        <td id="LC137" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>##############################</span></td>
+        <td id="LC137" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Take maximal amount</span></td>
       </tr>
       <tr>
         <td id="L138" class="blob-num js-line-number" data-line-number="138"></td>
-        <td id="LC138" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Coordinate Descent (Jacobi) #</span></td>
+        <td id="LC138" class="blob-code blob-code-inner js-file-line">        μxyEy[iB,jB] <span class="pl-k">=</span> <span class="pl-c1">min</span>(μxyPy[iB,jB], myy<span class="pl-k">-</span>cumQty);</td>
       </tr>
       <tr>
         <td id="L139" class="blob-num js-line-number" data-line-number="139"></td>
-        <td id="LC139" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>##############################</span></td>
+        <td id="LC139" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L140" class="blob-num js-line-number" data-line-number="140"></td>
-        <td id="LC140" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC140" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Update cumulative</span></td>
       </tr>
       <tr>
         <td id="L141" class="blob-num js-line-number" data-line-number="141"></td>
-        <td id="LC141" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC141" class="blob-code blob-code-inner js-file-line">        cumQty <span class="pl-k">+=</span> μxyEy[iB,jB]</td>
       </tr>
       <tr>
         <td id="L142" class="blob-num js-line-number" data-line-number="142"></td>
-        <td id="LC142" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Gradient at z=(i,j), pz</span></td>
+        <td id="LC142" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L143" class="blob-num js-line-number" data-line-number="143"></td>
-        <td id="LC143" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">WgCoord</span>(i, j, pz, p, CYZ, my, UXZ, nx)</td>
+        <td id="LC143" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Update tried</span></td>
       </tr>
       <tr>
         <td id="L144" class="blob-num js-line-number" data-line-number="144"></td>
-        <td id="LC144" class="blob-code blob-code-inner js-file-line">    p0 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(p);</td>
+        <td id="LC144" class="blob-code blob-code-inner js-file-line">        tried[iB,jB] <span class="pl-k">=</span> <span class="pl-c1">1.</span>;</td>
       </tr>
       <tr>
         <td id="L145" class="blob-num js-line-number" data-line-number="145"></td>
-        <td id="LC145" class="blob-code blob-code-inner js-file-line">    p0[i,j] <span class="pl-k">=</span> pz;</td>
+        <td id="LC145" class="blob-code blob-code-inner js-file-line">        </td>
       </tr>
       <tr>
         <td id="L146" class="blob-num js-line-number" data-line-number="146"></td>
-        <td id="LC146" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC146" class="blob-code blob-code-inner js-file-line">        nIt <span class="pl-k">+=</span> <span class="pl-c1">1</span>;</td>
       </tr>
       <tr>
         <td id="L147" class="blob-num js-line-number" data-line-number="147"></td>
-        <td id="LC147" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-c1">Wg</span>(p0, CYZ, my, UXZ, nx)[i,j]</td>
+        <td id="LC147" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L148" class="blob-num js-line-number" data-line-number="148"></td>
-        <td id="LC148" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
-      </tr>
-      <tr>
-        <td id="L149" class="blob-num js-line-number" data-line-number="149"></td>
-        <td id="LC149" class="blob-code blob-code-inner js-file-line">
+        <td id="LC148" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L149" class="blob-num js-line-number" data-line-number="149"></td>
+        <td id="LC149" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> μxyEy</td>
+      </tr>
+      <tr>
         <td id="L150" class="blob-num js-line-number" data-line-number="150"></td>
-        <td id="LC150" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">coordDescentJacobi</span>(CYZ,my,UXZ,nx,precision)</td>
+        <td id="LC150" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L151" class="blob-num js-line-number" data-line-number="151"></td>
@@ -1345,117 +1340,116 @@
       </tr>
       <tr>
         <td id="L152" class="blob-num js-line-number" data-line-number="152"></td>
-        <td id="LC152" class="blob-code blob-code-inner js-file-line">    pCurr <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC152" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">engagementIteration</span>(μxyP, γxy, my)</td>
       </tr>
       <tr>
         <td id="L153" class="blob-num js-line-number" data-line-number="153"></td>
-        <td id="LC153" class="blob-code blob-code-inner js-file-line">    pNext <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC153" class="blob-code blob-code-inner js-file-line">    μxyE <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
       </tr>
       <tr>
         <td id="L154" class="blob-num js-line-number" data-line-number="154"></td>
-        <td id="LC154" class="blob-code blob-code-inner js-file-line">    itCD <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+        <td id="LC154" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L155" class="blob-num js-line-number" data-line-number="155"></td>
-        <td id="LC155" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC155" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> yi <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L156" class="blob-num js-line-number" data-line-number="156"></td>
-        <td id="LC156" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">tic</span>()</td>
+        <td id="LC156" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> yj <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L157" class="blob-num js-line-number" data-line-number="157"></td>
-        <td id="LC157" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10000</span></td>
+        <td id="LC157" class="blob-code blob-code-inner js-file-line">            μxyE[:,:,yi,yj] <span class="pl-k">=</span> <span class="pl-c1">engagementGreedy</span>(μxyP[:,:,yi,yj], γxy[:,:,yi,yj], my[yi,yj])</td>
       </tr>
       <tr>
         <td id="L158" class="blob-num js-line-number" data-line-number="158"></td>
-        <td id="LC158" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC158" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L159" class="blob-num js-line-number" data-line-number="159"></td>
-        <td id="LC159" class="blob-code blob-code-inner js-file-line">        pNext <span class="pl-k">=</span> <span class="pl-c1">copy</span>(pCurr)</td>
+        <td id="LC159" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L160" class="blob-num js-line-number" data-line-number="160"></td>
-        <td id="LC160" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC160" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L161" class="blob-num js-line-number" data-line-number="161"></td>
-        <td id="LC161" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC161" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> μxyE</td>
       </tr>
       <tr>
         <td id="L162" class="blob-num js-line-number" data-line-number="162"></td>
-        <td id="LC162" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC162" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L163" class="blob-num js-line-number" data-line-number="163"></td>
-        <td id="LC163" class="blob-code blob-code-inner js-file-line">                f <span class="pl-k">=</span> pz <span class="pl-k">-&gt;</span> <span class="pl-c1">WgCoord</span>(i,j,pz,pCurr,CYZ,my,UXZ,nx)</td>
+        <td id="LC163" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L164" class="blob-num js-line-number" data-line-number="164"></td>
-        <td id="LC164" class="blob-code blob-code-inner js-file-line">                pNext[i,j] <span class="pl-k">=</span> <span class="pl-c1">fzero</span>(f, <span class="pl-c1">0.</span>, <span class="pl-c1">2.</span>)</td>
+        <td id="LC164" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Run Gale-Shapley</span></td>
       </tr>
       <tr>
         <td id="L165" class="blob-num js-line-number" data-line-number="165"></td>
-        <td id="LC165" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">end</span></td>
+        <td id="LC165" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L166" class="blob-num js-line-number" data-line-number="166"></td>
-        <td id="LC166" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC166" class="blob-code blob-code-inner js-file-line">μxyA0 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L167" class="blob-num js-line-number" data-line-number="167"></td>
-        <td id="LC167" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC167" class="blob-code blob-code-inner js-file-line">μxyA1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L168" class="blob-num js-line-number" data-line-number="168"></td>
-        <td id="LC168" class="blob-code blob-code-inner js-file-line">        pCurr <span class="pl-k">=</span> <span class="pl-c1">copy</span>(pNext)</td>
+        <td id="LC168" class="blob-code blob-code-inner js-file-line">μxyP1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L169" class="blob-num js-line-number" data-line-number="169"></td>
-        <td id="LC169" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC169" class="blob-code blob-code-inner js-file-line">μxyE1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L170" class="blob-num js-line-number" data-line-number="170"></td>
-        <td id="LC170" class="blob-code blob-code-inner js-file-line">        precCurr <span class="pl-k">=</span> <span class="pl-c1">prec</span>(<span class="pl-c1">supply</span>(pCurr,CYZ,my), <span class="pl-c1">demand</span>(pCurr,UXZ,nx))</td>
-      </tr>
-      <tr>
-        <td id="L171" class="blob-num js-line-number" data-line-number="171"></td>
-        <td id="LC171" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> precCurr <span class="pl-k">&lt;</span> precision</td>
-      </tr>
-      <tr>
-        <td id="L172" class="blob-num js-line-number" data-line-number="172"></td>
-        <td id="LC172" class="blob-code blob-code-inner js-file-line">            itCD <span class="pl-k">=</span> it</td>
-      </tr>
-      <tr>
-        <td id="L173" class="blob-num js-line-number" data-line-number="173"></td>
-        <td id="LC173" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">break</span></td>
-      </tr>
-      <tr>
-        <td id="L174" class="blob-num js-line-number" data-line-number="174"></td>
-        <td id="LC174" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
-      </tr>
-      <tr>
-        <td id="L175" class="blob-num js-line-number" data-line-number="175"></td>
-        <td id="LC175" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
-      </tr>
-      <tr>
-        <td id="L176" class="blob-num js-line-number" data-line-number="176"></td>
-        <td id="LC176" class="blob-code blob-code-inner js-file-line">    timeCD <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
-      </tr>
-      <tr>
-        <td id="L177" class="blob-num js-line-number" data-line-number="177"></td>
-        <td id="LC177" class="blob-code blob-code-inner js-file-line">
+        <td id="LC170" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L171" class="blob-num js-line-number" data-line-number="171"></td>
+        <td id="LC171" class="blob-code blob-code-inner js-file-line">GSit <span class="pl-k">=</span> <span class="pl-c1">0</span>;</td>
+      </tr>
+      <tr>
+        <td id="L172" class="blob-num js-line-number" data-line-number="172"></td>
+        <td id="LC172" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L173" class="blob-num js-line-number" data-line-number="173"></td>
+        <td id="LC173" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">tic</span>()</td>
+      </tr>
+      <tr>
+        <td id="L174" class="blob-num js-line-number" data-line-number="174"></td>
+        <td id="LC174" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">1000</span></td>
+      </tr>
+      <tr>
+        <td id="L175" class="blob-num js-line-number" data-line-number="175"></td>
+        <td id="LC175" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L176" class="blob-num js-line-number" data-line-number="176"></td>
+        <td id="LC176" class="blob-code blob-code-inner js-file-line">    μxyP1 <span class="pl-k">=</span> <span class="pl-c1">proposalIteration</span>(μxyA0, αxy, nx);</td>
+      </tr>
+      <tr>
+        <td id="L177" class="blob-num js-line-number" data-line-number="177"></td>
+        <td id="LC177" class="blob-code blob-code-inner js-file-line">    μxyE1 <span class="pl-k">=</span> <span class="pl-c1">engagementIteration</span>(μxyP1, γxy, my);</td>
+      </tr>
+      <tr>
         <td id="L178" class="blob-num js-line-number" data-line-number="178"></td>
-        <td id="LC178" class="blob-code blob-code-inner js-file-line">    pCD <span class="pl-k">=</span> pCurr;</td>
+        <td id="LC178" class="blob-code blob-code-inner js-file-line">    μxyA1 <span class="pl-k">=</span> μxyA1 <span class="pl-k">-</span> (μxyP1 <span class="pl-k">-</span> μxyE1);</td>
       </tr>
       <tr>
         <td id="L179" class="blob-num js-line-number" data-line-number="179"></td>
@@ -1464,45 +1458,43 @@
       </tr>
       <tr>
         <td id="L180" class="blob-num js-line-number" data-line-number="180"></td>
-        <td id="LC180" class="blob-code blob-code-inner js-file-line">    SCD <span class="pl-k">=</span> <span class="pl-c1">supply</span>(pCD, CYZ, my)</td>
+        <td id="LC180" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Check converge</span></td>
       </tr>
       <tr>
         <td id="L181" class="blob-num js-line-number" data-line-number="181"></td>
-        <td id="LC181" class="blob-code blob-code-inner js-file-line">    DCD <span class="pl-k">=</span> <span class="pl-c1">demand</span>(pCD, UXZ, nx)</td>
+        <td id="LC181" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-c1">sum</span>(<span class="pl-c1">abs</span>.(μxyP1 <span class="pl-k">-</span> μxyE1)) <span class="pl-k">&lt;</span> <span class="pl-c1">1e-2</span></td>
       </tr>
       <tr>
         <td id="L182" class="blob-num js-line-number" data-line-number="182"></td>
-        <td id="LC182" class="blob-code blob-code-inner js-file-line">    precCD <span class="pl-k">=</span> <span class="pl-c1">prec</span>(SCD, DCD)</td>
+        <td id="LC182" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Converged<span class="pl-pds">&quot;</span></span>)</td>
       </tr>
       <tr>
         <td id="L183" class="blob-num js-line-number" data-line-number="183"></td>
-        <td id="LC183" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC183" class="blob-code blob-code-inner js-file-line">        GSit <span class="pl-k">=</span> it;</td>
       </tr>
       <tr>
         <td id="L184" class="blob-num js-line-number" data-line-number="184"></td>
-        <td id="LC184" class="blob-code blob-code-inner js-file-line">    trCD <span class="pl-k">=</span> <span class="pl-c1">totalRides</span>(SCD)</td>
+        <td id="LC184" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">break</span></td>
       </tr>
       <tr>
         <td id="L185" class="blob-num js-line-number" data-line-number="185"></td>
-        <td id="LC185" class="blob-code blob-code-inner js-file-line">    avgprcCD <span class="pl-k">=</span> <span class="pl-c1">averagePrice</span>(SCD,pCD)</td>
+        <td id="LC185" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L186" class="blob-num js-line-number" data-line-number="186"></td>
-        <td id="LC186" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC186" class="blob-code blob-code-inner js-file-line">    </td>
       </tr>
       <tr>
         <td id="L187" class="blob-num js-line-number" data-line-number="187"></td>
-        <td id="LC187" class="blob-code blob-code-inner js-file-line">    CDstats <span class="pl-k">=</span> [precCD, trCD, avgprcCD, itCD, timeCD]</td>
+        <td id="LC187" class="blob-code blob-code-inner js-file-line">    μxyA0 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(μxyA1);</td>
       </tr>
       <tr>
         <td id="L188" class="blob-num js-line-number" data-line-number="188"></td>
-        <td id="LC188" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> CDstats</td>
+        <td id="LC188" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L189" class="blob-num js-line-number" data-line-number="189"></td>
-        <td id="LC189" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+        <td id="LC189" class="blob-code blob-code-inner js-file-line">GStime <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
       </tr>
       <tr>
         <td id="L190" class="blob-num js-line-number" data-line-number="190"></td>
@@ -1511,8 +1503,7 @@
       </tr>
       <tr>
         <td id="L191" class="blob-num js-line-number" data-line-number="191"></td>
-        <td id="LC191" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC191" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> GStime, GSit</td>
       </tr>
       <tr>
         <td id="L192" class="blob-num js-line-number" data-line-number="192"></td>
@@ -1521,68 +1512,67 @@
       </tr>
       <tr>
         <td id="L193" class="blob-num js-line-number" data-line-number="193"></td>
-        <td id="LC193" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>####################################</span></td>
+        <td id="LC193" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Compute summary stats</span></td>
       </tr>
       <tr>
         <td id="L194" class="blob-num js-line-number" data-line-number="194"></td>
-        <td id="LC194" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Coordinate Descent (Gauss-Seidel) #</span></td>
+        <td id="LC194" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L195" class="blob-num js-line-number" data-line-number="195"></td>
-        <td id="LC195" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>####################################</span></td>
+        <td id="LC195" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">passWelfare</span>(μxy, αxy, nx)</td>
       </tr>
       <tr>
         <td id="L196" class="blob-num js-line-number" data-line-number="196"></td>
-        <td id="LC196" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC196" class="blob-code blob-code-inner js-file-line">    uMatch <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxy <span class="pl-k">.*</span> αxy);</td>
       </tr>
       <tr>
         <td id="L197" class="blob-num js-line-number" data-line-number="197"></td>
-        <td id="LC197" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC197" class="blob-code blob-code-inner js-file-line">    uNomatch <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">2</span> <span class="pl-k">*</span> <span class="pl-c1">sum</span>(nx <span class="pl-k">-</span> <span class="pl-c1">sum</span>(μxy,[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>])[:,:,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>]);</td>
       </tr>
       <tr>
         <td id="L198" class="blob-num js-line-number" data-line-number="198"></td>
-        <td id="LC198" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">coordDescentGaussSeidel</span>(CYZ,my,UXZ,nx,precision)</td>
+        <td id="LC198" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L199" class="blob-num js-line-number" data-line-number="199"></td>
-        <td id="LC199" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC199" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> uMatch <span class="pl-k">+</span> uNomatch</td>
       </tr>
       <tr>
         <td id="L200" class="blob-num js-line-number" data-line-number="200"></td>
-        <td id="LC200" class="blob-code blob-code-inner js-file-line">    pCurr <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC200" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L201" class="blob-num js-line-number" data-line-number="201"></td>
-        <td id="LC201" class="blob-code blob-code-inner js-file-line">    pNext <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)</td>
+        <td id="LC201" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L202" class="blob-num js-line-number" data-line-number="202"></td>
-        <td id="LC202" class="blob-code blob-code-inner js-file-line">    itCD <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+        <td id="LC202" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">carWelfare</span>(μxy, γxy, my)</td>
       </tr>
       <tr>
         <td id="L203" class="blob-num js-line-number" data-line-number="203"></td>
-        <td id="LC203" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC203" class="blob-code blob-code-inner js-file-line">    uMatch <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxy <span class="pl-k">.*</span> γxy);</td>
       </tr>
       <tr>
         <td id="L204" class="blob-num js-line-number" data-line-number="204"></td>
-        <td id="LC204" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">tic</span>()</td>
+        <td id="LC204" class="blob-code blob-code-inner js-file-line">    uNomatch <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">2</span> <span class="pl-k">*</span> <span class="pl-c1">sum</span>(my <span class="pl-k">-</span> <span class="pl-c1">sum</span>(μxy,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>])[<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,:,:]);</td>
       </tr>
       <tr>
         <td id="L205" class="blob-num js-line-number" data-line-number="205"></td>
-        <td id="LC205" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10000</span></td>
-      </tr>
-      <tr>
-        <td id="L206" class="blob-num js-line-number" data-line-number="206"></td>
-        <td id="LC206" class="blob-code blob-code-inner js-file-line">
+        <td id="LC205" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L206" class="blob-num js-line-number" data-line-number="206"></td>
+        <td id="LC206" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> uMatch <span class="pl-k">+</span> uNomatch</td>
+      </tr>
+      <tr>
         <td id="L207" class="blob-num js-line-number" data-line-number="207"></td>
-        <td id="LC207" class="blob-code blob-code-inner js-file-line">        pNext <span class="pl-k">=</span> <span class="pl-c1">copy</span>(pCurr)</td>
+        <td id="LC207" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L208" class="blob-num js-line-number" data-line-number="208"></td>
@@ -1591,27 +1581,28 @@
       </tr>
       <tr>
         <td id="L209" class="blob-num js-line-number" data-line-number="209"></td>
-        <td id="LC209" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC209" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> GSpass <span class="pl-k">=</span> <span class="pl-c1">passWelfare</span>(μxyP1, αxy, nx)</td>
       </tr>
       <tr>
         <td id="L210" class="blob-num js-line-number" data-line-number="210"></td>
-        <td id="LC210" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+        <td id="LC210" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> GScar <span class="pl-k">=</span> <span class="pl-c1">carWelfare</span>(μxyP1, γxy, my)</td>
       </tr>
       <tr>
         <td id="L211" class="blob-num js-line-number" data-line-number="211"></td>
-        <td id="LC211" class="blob-code blob-code-inner js-file-line">                f <span class="pl-k">=</span> pz <span class="pl-k">-&gt;</span> <span class="pl-c1">WgCoord</span>(i,j,pz,pNext,CYZ,my,UXZ,nx)</td>
+        <td id="LC211" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L212" class="blob-num js-line-number" data-line-number="212"></td>
-        <td id="LC212" class="blob-code blob-code-inner js-file-line">                pNext[i,j] <span class="pl-k">=</span> <span class="pl-c1">fzero</span>(f, <span class="pl-c1">0.</span>, <span class="pl-c1">2.</span>)</td>
+        <td id="LC212" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>#####################</span></td>
       </tr>
       <tr>
         <td id="L213" class="blob-num js-line-number" data-line-number="213"></td>
-        <td id="LC213" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">end</span></td>
+        <td id="LC213" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Adachi&#39;s Algorithm #</span></td>
       </tr>
       <tr>
         <td id="L214" class="blob-num js-line-number" data-line-number="214"></td>
-        <td id="LC214" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC214" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>#####################</span></td>
       </tr>
       <tr>
         <td id="L215" class="blob-num js-line-number" data-line-number="215"></td>
@@ -1620,40 +1611,42 @@
       </tr>
       <tr>
         <td id="L216" class="blob-num js-line-number" data-line-number="216"></td>
-        <td id="LC216" class="blob-code blob-code-inner js-file-line">        pCurr <span class="pl-k">=</span> <span class="pl-c1">copy</span>(pNext)</td>
-      </tr>
-      <tr>
-        <td id="L217" class="blob-num js-line-number" data-line-number="217"></td>
-        <td id="LC217" class="blob-code blob-code-inner js-file-line">
+        <td id="LC216" class="blob-code blob-code-inner js-file-line">
 </td>
       </tr>
       <tr>
+        <td id="L217" class="blob-num js-line-number" data-line-number="217"></td>
+        <td id="LC217" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> General tiebreaker noise for α and γ</span></td>
+      </tr>
+      <tr>
         <td id="L218" class="blob-num js-line-number" data-line-number="218"></td>
-        <td id="LC218" class="blob-code blob-code-inner js-file-line">        precCurr <span class="pl-k">=</span> <span class="pl-c1">prec</span>(<span class="pl-c1">supply</span>(pCurr,CYZ,my), <span class="pl-c1">demand</span>(pCurr,UXZ,nx))</td>
+        <td id="LC218" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">srand</span>(<span class="pl-c1">1</span>);</td>
       </tr>
       <tr>
         <td id="L219" class="blob-num js-line-number" data-line-number="219"></td>
-        <td id="LC219" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> precCurr <span class="pl-k">&lt;</span> precision</td>
+        <td id="LC219" class="blob-code blob-code-inner js-file-line">αε <span class="pl-k">=</span> <span class="pl-c1">rand</span>(<span class="pl-c1">Uniform</span>(), <span class="pl-c1">10</span>, <span class="pl-c1">10</span>, <span class="pl-c1">10</span>, <span class="pl-c1">10</span>)<span class="pl-k">*</span><span class="pl-c1">0.01</span>;</td>
       </tr>
       <tr>
         <td id="L220" class="blob-num js-line-number" data-line-number="220"></td>
-        <td id="LC220" class="blob-code blob-code-inner js-file-line">            itCD <span class="pl-k">=</span> it</td>
+        <td id="LC220" class="blob-code blob-code-inner js-file-line">γε <span class="pl-k">=</span> <span class="pl-c1">rand</span>(<span class="pl-c1">Uniform</span>(), <span class="pl-c1">10</span>, <span class="pl-c1">10</span>, <span class="pl-c1">10</span>, <span class="pl-c1">10</span>)<span class="pl-k">*</span><span class="pl-c1">0.01</span>;</td>
       </tr>
       <tr>
         <td id="L221" class="blob-num js-line-number" data-line-number="221"></td>
-        <td id="LC221" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">break</span></td>
+        <td id="LC221" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L222" class="blob-num js-line-number" data-line-number="222"></td>
-        <td id="LC222" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+        <td id="LC222" class="blob-code blob-code-inner js-file-line">αxyε <span class="pl-k">=</span> αxy <span class="pl-k">+</span> αε;</td>
       </tr>
       <tr>
         <td id="L223" class="blob-num js-line-number" data-line-number="223"></td>
-        <td id="LC223" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+        <td id="LC223" class="blob-code blob-code-inner js-file-line">γxyε <span class="pl-k">=</span> γxy <span class="pl-k">+</span> γε;</td>
       </tr>
       <tr>
         <td id="L224" class="blob-num js-line-number" data-line-number="224"></td>
-        <td id="LC224" class="blob-code blob-code-inner js-file-line">    timeCD <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
+        <td id="LC224" class="blob-code blob-code-inner js-file-line">
+</td>
       </tr>
       <tr>
         <td id="L225" class="blob-num js-line-number" data-line-number="225"></td>
@@ -1662,54 +1655,431 @@
       </tr>
       <tr>
         <td id="L226" class="blob-num js-line-number" data-line-number="226"></td>
-        <td id="LC226" class="blob-code blob-code-inner js-file-line">    pCD <span class="pl-k">=</span> pCurr;</td>
+        <td id="LC226" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">updateU</span>(αxyε, γxyε, vj)</td>
       </tr>
       <tr>
         <td id="L227" class="blob-num js-line-number" data-line-number="227"></td>
-        <td id="LC227" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC227" class="blob-code blob-code-inner js-file-line">    ui <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
       </tr>
       <tr>
         <td id="L228" class="blob-num js-line-number" data-line-number="228"></td>
-        <td id="LC228" class="blob-code blob-code-inner js-file-line">    SCD <span class="pl-k">=</span> <span class="pl-c1">supply</span>(pCD, CYZ, my)</td>
+        <td id="LC228" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> xi <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L229" class="blob-num js-line-number" data-line-number="229"></td>
-        <td id="LC229" class="blob-code blob-code-inner js-file-line">    DCD <span class="pl-k">=</span> <span class="pl-c1">demand</span>(pCD, UXZ, nx)</td>
+        <td id="LC229" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> yi <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
       </tr>
       <tr>
         <td id="L230" class="blob-num js-line-number" data-line-number="230"></td>
-        <td id="LC230" class="blob-code blob-code-inner js-file-line">    precCD <span class="pl-k">=</span> <span class="pl-c1">prec</span>(SCD, DCD)</td>
+        <td id="LC230" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"><span class="pl-c">#</span> γij &gt;= vj </span></td>
       </tr>
       <tr>
         <td id="L231" class="blob-num js-line-number" data-line-number="231"></td>
-        <td id="LC231" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC231" class="blob-code blob-code-inner js-file-line">            eligibleY <span class="pl-k">=</span> γxyε[xi,yi,:,:] <span class="pl-k">.&gt;=</span> vj</td>
       </tr>
       <tr>
         <td id="L232" class="blob-num js-line-number" data-line-number="232"></td>
-        <td id="LC232" class="blob-code blob-code-inner js-file-line">    trCD <span class="pl-k">=</span> <span class="pl-c1">totalRides</span>(SCD)</td>
+        <td id="LC232" class="blob-code blob-code-inner js-file-line">            ui[xi,yi] <span class="pl-k">=</span> <span class="pl-c1">max</span>(<span class="pl-c1">maximum</span>(αxyε[xi,yi,:,:] <span class="pl-k">-</span><span class="pl-c1">10</span><span class="pl-k">*</span>(<span class="pl-c1">1</span> <span class="pl-k">-</span> eligibleY)), <span class="pl-k">-</span><span class="pl-c1">2.</span>)</td>
       </tr>
       <tr>
         <td id="L233" class="blob-num js-line-number" data-line-number="233"></td>
-        <td id="LC233" class="blob-code blob-code-inner js-file-line">    avgprcCD <span class="pl-k">=</span> <span class="pl-c1">averagePrice</span>(SCD,pCD)</td>
+        <td id="LC233" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L234" class="blob-num js-line-number" data-line-number="234"></td>
-        <td id="LC234" class="blob-code blob-code-inner js-file-line">
-</td>
+        <td id="LC234" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L235" class="blob-num js-line-number" data-line-number="235"></td>
-        <td id="LC235" class="blob-code blob-code-inner js-file-line">    CDstats <span class="pl-k">=</span> [precCD, trCD, avgprcCD, itCD, timeCD]</td>
+        <td id="LC235" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> ui</td>
       </tr>
       <tr>
         <td id="L236" class="blob-num js-line-number" data-line-number="236"></td>
-        <td id="LC236" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> CDstats</td>
+        <td id="LC236" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
       </tr>
       <tr>
         <td id="L237" class="blob-num js-line-number" data-line-number="237"></td>
-        <td id="LC237" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+        <td id="LC237" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L238" class="blob-num js-line-number" data-line-number="238"></td>
+        <td id="LC238" class="blob-code blob-code-inner js-file-line"><span class="pl-k">function</span> <span class="pl-en">updateV</span>(αxyε, γxyε, ui)</td>
+      </tr>
+      <tr>
+        <td id="L239" class="blob-num js-line-number" data-line-number="239"></td>
+        <td id="LC239" class="blob-code blob-code-inner js-file-line">    vj <span class="pl-k">=</span> <span class="pl-c1">zeros</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L240" class="blob-num js-line-number" data-line-number="240"></td>
+        <td id="LC240" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> xj <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+      </tr>
+      <tr>
+        <td id="L241" class="blob-num js-line-number" data-line-number="241"></td>
+        <td id="LC241" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> yj <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span></td>
+      </tr>
+      <tr>
+        <td id="L242" class="blob-num js-line-number" data-line-number="242"></td>
+        <td id="LC242" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"><span class="pl-c">#</span> αij &gt;= ui </span></td>
+      </tr>
+      <tr>
+        <td id="L243" class="blob-num js-line-number" data-line-number="243"></td>
+        <td id="LC243" class="blob-code blob-code-inner js-file-line">            eligibleX <span class="pl-k">=</span> αxyε[:,:,xj,yj] <span class="pl-k">.&gt;=</span> ui</td>
+      </tr>
+      <tr>
+        <td id="L244" class="blob-num js-line-number" data-line-number="244"></td>
+        <td id="LC244" class="blob-code blob-code-inner js-file-line">            vj[xj,yj] <span class="pl-k">=</span> <span class="pl-c1">max</span>(<span class="pl-c1">maximum</span>(γxyε[:,:,xj,yj] <span class="pl-k">-</span><span class="pl-c1">10</span><span class="pl-k">*</span>(<span class="pl-c1">1</span> <span class="pl-k">-</span> eligibleX)), <span class="pl-k">-</span><span class="pl-c1">2.</span>)</td>
+      </tr>
+      <tr>
+        <td id="L245" class="blob-num js-line-number" data-line-number="245"></td>
+        <td id="LC245" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L246" class="blob-num js-line-number" data-line-number="246"></td>
+        <td id="LC246" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L247" class="blob-num js-line-number" data-line-number="247"></td>
+        <td id="LC247" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> vj</td>
+      </tr>
+      <tr>
+        <td id="L248" class="blob-num js-line-number" data-line-number="248"></td>
+        <td id="LC248" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L249" class="blob-num js-line-number" data-line-number="249"></td>
+        <td id="LC249" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L250" class="blob-num js-line-number" data-line-number="250"></td>
+        <td id="LC250" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L251" class="blob-num js-line-number" data-line-number="251"></td>
+        <td id="LC251" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Inital point</span></td>
+      </tr>
+      <tr>
+        <td id="L252" class="blob-num js-line-number" data-line-number="252"></td>
+        <td id="LC252" class="blob-code blob-code-inner js-file-line">ui0 <span class="pl-k">=</span> <span class="pl-c1">maximum</span>(αxyε,[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>])[:,:,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>];</td>
+      </tr>
+      <tr>
+        <td id="L253" class="blob-num js-line-number" data-line-number="253"></td>
+        <td id="LC253" class="blob-code blob-code-inner js-file-line">vj0 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>)<span class="pl-k">*-</span><span class="pl-c1">2</span>;</td>
+      </tr>
+      <tr>
+        <td id="L254" class="blob-num js-line-number" data-line-number="254"></td>
+        <td id="LC254" class="blob-code blob-code-inner js-file-line">ui1 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(ui0)</td>
+      </tr>
+      <tr>
+        <td id="L255" class="blob-num js-line-number" data-line-number="255"></td>
+        <td id="LC255" class="blob-code blob-code-inner js-file-line">vj1 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(vj0)</td>
+      </tr>
+      <tr>
+        <td id="L256" class="blob-num js-line-number" data-line-number="256"></td>
+        <td id="LC256" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L257" class="blob-num js-line-number" data-line-number="257"></td>
+        <td id="LC257" class="blob-code blob-code-inner js-file-line">Ait <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L258" class="blob-num js-line-number" data-line-number="258"></td>
+        <td id="LC258" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L259" class="blob-num js-line-number" data-line-number="259"></td>
+        <td id="LC259" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">tic</span>()</td>
+      </tr>
+      <tr>
+        <td id="L260" class="blob-num js-line-number" data-line-number="260"></td>
+        <td id="LC260" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">100</span></td>
+      </tr>
+      <tr>
+        <td id="L261" class="blob-num js-line-number" data-line-number="261"></td>
+        <td id="LC261" class="blob-code blob-code-inner js-file-line">    ui1 <span class="pl-k">=</span> <span class="pl-c1">updateU</span>(αxyε, γxyε, vj0)</td>
+      </tr>
+      <tr>
+        <td id="L262" class="blob-num js-line-number" data-line-number="262"></td>
+        <td id="LC262" class="blob-code blob-code-inner js-file-line">    vj1 <span class="pl-k">=</span> <span class="pl-c1">updateV</span>(αxyε, γxyε, ui1)</td>
+      </tr>
+      <tr>
+        <td id="L263" class="blob-num js-line-number" data-line-number="263"></td>
+        <td id="LC263" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L264" class="blob-num js-line-number" data-line-number="264"></td>
+        <td id="LC264" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">@show</span> it</td>
+      </tr>
+      <tr>
+        <td id="L265" class="blob-num js-line-number" data-line-number="265"></td>
+        <td id="LC265" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">@show</span> prec <span class="pl-k">=</span> <span class="pl-c1">norm</span>(ui1 <span class="pl-k">-</span> ui0) <span class="pl-k">+</span> <span class="pl-c1">norm</span>(vj1 <span class="pl-k">-</span> vj0)</td>
+      </tr>
+      <tr>
+        <td id="L266" class="blob-num js-line-number" data-line-number="266"></td>
+        <td id="LC266" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">@show</span> <span class="pl-c1">norm</span>(ui1<span class="pl-k">-</span>ui0)</td>
+      </tr>
+      <tr>
+        <td id="L267" class="blob-num js-line-number" data-line-number="267"></td>
+        <td id="LC267" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> prec <span class="pl-k">&lt;</span> <span class="pl-c1">1e-5</span></td>
+      </tr>
+      <tr>
+        <td id="L268" class="blob-num js-line-number" data-line-number="268"></td>
+        <td id="LC268" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>CONVERGED<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L269" class="blob-num js-line-number" data-line-number="269"></td>
+        <td id="LC269" class="blob-code blob-code-inner js-file-line">        Ait <span class="pl-k">=</span> it</td>
+      </tr>
+      <tr>
+        <td id="L270" class="blob-num js-line-number" data-line-number="270"></td>
+        <td id="LC270" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">break</span></td>
+      </tr>
+      <tr>
+        <td id="L271" class="blob-num js-line-number" data-line-number="271"></td>
+        <td id="LC271" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L272" class="blob-num js-line-number" data-line-number="272"></td>
+        <td id="LC272" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L273" class="blob-num js-line-number" data-line-number="273"></td>
+        <td id="LC273" class="blob-code blob-code-inner js-file-line">    ui0 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(ui1)</td>
+      </tr>
+      <tr>
+        <td id="L274" class="blob-num js-line-number" data-line-number="274"></td>
+        <td id="LC274" class="blob-code blob-code-inner js-file-line">    vj0 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(vj1)</td>
+      </tr>
+      <tr>
+        <td id="L275" class="blob-num js-line-number" data-line-number="275"></td>
+        <td id="LC275" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L276" class="blob-num js-line-number" data-line-number="276"></td>
+        <td id="LC276" class="blob-code blob-code-inner js-file-line">Atime <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
+      </tr>
+      <tr>
+        <td id="L277" class="blob-num js-line-number" data-line-number="277"></td>
+        <td id="LC277" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L278" class="blob-num js-line-number" data-line-number="278"></td>
+        <td id="LC278" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> Apass <span class="pl-k">=</span> <span class="pl-c1">sum</span>(ui1)</td>
+      </tr>
+      <tr>
+        <td id="L279" class="blob-num js-line-number" data-line-number="279"></td>
+        <td id="LC279" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> Acar <span class="pl-k">=</span> <span class="pl-c1">sum</span>(vj1)</td>
+      </tr>
+      <tr>
+        <td id="L280" class="blob-num js-line-number" data-line-number="280"></td>
+        <td id="LC280" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L281" class="blob-num js-line-number" data-line-number="281"></td>
+        <td id="LC281" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>######################</span></td>
+      </tr>
+      <tr>
+        <td id="L282" class="blob-num js-line-number" data-line-number="282"></td>
+        <td id="LC282" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> GS with tiebreakers #</span></td>
+      </tr>
+      <tr>
+        <td id="L283" class="blob-num js-line-number" data-line-number="283"></td>
+        <td id="LC283" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>######################</span></td>
+      </tr>
+      <tr>
+        <td id="L284" class="blob-num js-line-number" data-line-number="284"></td>
+        <td id="LC284" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L285" class="blob-num js-line-number" data-line-number="285"></td>
+        <td id="LC285" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Run Gale-Shapley</span></td>
+      </tr>
+      <tr>
+        <td id="L286" class="blob-num js-line-number" data-line-number="286"></td>
+        <td id="LC286" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L287" class="blob-num js-line-number" data-line-number="287"></td>
+        <td id="LC287" class="blob-code blob-code-inner js-file-line">μxyA0 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L288" class="blob-num js-line-number" data-line-number="288"></td>
+        <td id="LC288" class="blob-code blob-code-inner js-file-line">μxyA1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L289" class="blob-num js-line-number" data-line-number="289"></td>
+        <td id="LC289" class="blob-code blob-code-inner js-file-line">μxyP1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L290" class="blob-num js-line-number" data-line-number="290"></td>
+        <td id="LC290" class="blob-code blob-code-inner js-file-line">μxyE1 <span class="pl-k">=</span> <span class="pl-c1">ones</span>(<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</td>
+      </tr>
+      <tr>
+        <td id="L291" class="blob-num js-line-number" data-line-number="291"></td>
+        <td id="LC291" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L292" class="blob-num js-line-number" data-line-number="292"></td>
+        <td id="LC292" class="blob-code blob-code-inner js-file-line">GSεit <span class="pl-k">=</span> <span class="pl-c1">0</span>;</td>
+      </tr>
+      <tr>
+        <td id="L293" class="blob-num js-line-number" data-line-number="293"></td>
+        <td id="LC293" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L294" class="blob-num js-line-number" data-line-number="294"></td>
+        <td id="LC294" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">tic</span>()</td>
+      </tr>
+      <tr>
+        <td id="L295" class="blob-num js-line-number" data-line-number="295"></td>
+        <td id="LC295" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> it <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">1000</span></td>
+      </tr>
+      <tr>
+        <td id="L296" class="blob-num js-line-number" data-line-number="296"></td>
+        <td id="LC296" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L297" class="blob-num js-line-number" data-line-number="297"></td>
+        <td id="LC297" class="blob-code blob-code-inner js-file-line">    μxyP1 <span class="pl-k">=</span> <span class="pl-c1">proposalIteration</span>(μxyA0, αxyε, nx);</td>
+      </tr>
+      <tr>
+        <td id="L298" class="blob-num js-line-number" data-line-number="298"></td>
+        <td id="LC298" class="blob-code blob-code-inner js-file-line">    μxyE1 <span class="pl-k">=</span> <span class="pl-c1">engagementIteration</span>(μxyP1, γxyε, nx);</td>
+      </tr>
+      <tr>
+        <td id="L299" class="blob-num js-line-number" data-line-number="299"></td>
+        <td id="LC299" class="blob-code blob-code-inner js-file-line">    μxyA1 <span class="pl-k">=</span> μxyA1 <span class="pl-k">-</span> (μxyP1 <span class="pl-k">-</span> μxyE1);</td>
+      </tr>
+      <tr>
+        <td id="L300" class="blob-num js-line-number" data-line-number="300"></td>
+        <td id="LC300" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L301" class="blob-num js-line-number" data-line-number="301"></td>
+        <td id="LC301" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Check converge</span></td>
+      </tr>
+      <tr>
+        <td id="L302" class="blob-num js-line-number" data-line-number="302"></td>
+        <td id="LC302" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-c1">sum</span>(<span class="pl-c1">abs</span>.(μxyP1 <span class="pl-k">-</span> μxyE1)) <span class="pl-k">&lt;</span> <span class="pl-c1">1e-2</span></td>
+      </tr>
+      <tr>
+        <td id="L303" class="blob-num js-line-number" data-line-number="303"></td>
+        <td id="LC303" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Converged<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L304" class="blob-num js-line-number" data-line-number="304"></td>
+        <td id="LC304" class="blob-code blob-code-inner js-file-line">        GSεit <span class="pl-k">=</span> it;</td>
+      </tr>
+      <tr>
+        <td id="L305" class="blob-num js-line-number" data-line-number="305"></td>
+        <td id="LC305" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">break</span></td>
+      </tr>
+      <tr>
+        <td id="L306" class="blob-num js-line-number" data-line-number="306"></td>
+        <td id="LC306" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L307" class="blob-num js-line-number" data-line-number="307"></td>
+        <td id="LC307" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="L308" class="blob-num js-line-number" data-line-number="308"></td>
+        <td id="LC308" class="blob-code blob-code-inner js-file-line">    μxyA0 <span class="pl-k">=</span> <span class="pl-c1">copy</span>(μxyA1);</td>
+      </tr>
+      <tr>
+        <td id="L309" class="blob-num js-line-number" data-line-number="309"></td>
+        <td id="LC309" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+      </tr>
+      <tr>
+        <td id="L310" class="blob-num js-line-number" data-line-number="310"></td>
+        <td id="LC310" class="blob-code blob-code-inner js-file-line">GSεtime <span class="pl-k">=</span> <span class="pl-c1">toc</span>()</td>
+      </tr>
+      <tr>
+        <td id="L311" class="blob-num js-line-number" data-line-number="311"></td>
+        <td id="LC311" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L312" class="blob-num js-line-number" data-line-number="312"></td>
+        <td id="LC312" class="blob-code blob-code-inner js-file-line">uiGS <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxyP1 <span class="pl-k">.*</span> αxyε, [<span class="pl-c1">3</span>,<span class="pl-c1">4</span>])[:,:,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>]</td>
+      </tr>
+      <tr>
+        <td id="L313" class="blob-num js-line-number" data-line-number="313"></td>
+        <td id="LC313" class="blob-code blob-code-inner js-file-line">vjGS <span class="pl-k">=</span> <span class="pl-c1">sum</span>(μxyP1 <span class="pl-k">.*</span> γxyε, [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>])[<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,:,:]</td>
+      </tr>
+      <tr>
+        <td id="L314" class="blob-num js-line-number" data-line-number="314"></td>
+        <td id="LC314" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L315" class="blob-num js-line-number" data-line-number="315"></td>
+        <td id="LC315" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> GSεpass <span class="pl-k">=</span> <span class="pl-c1">passWelfare</span>(μxyP1, αxyε, nx)</td>
+      </tr>
+      <tr>
+        <td id="L316" class="blob-num js-line-number" data-line-number="316"></td>
+        <td id="LC316" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">@show</span> GSεcar <span class="pl-k">=</span> <span class="pl-c1">carWelfare</span>(μxyP1, γxyε, nx)</td>
+      </tr>
+      <tr>
+        <td id="L317" class="blob-num js-line-number" data-line-number="317"></td>
+        <td id="LC317" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L318" class="blob-num js-line-number" data-line-number="318"></td>
+        <td id="LC318" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###############</span></td>
+      </tr>
+      <tr>
+        <td id="L319" class="blob-num js-line-number" data-line-number="319"></td>
+        <td id="LC319" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Save to file #</span></td>
+      </tr>
+      <tr>
+        <td id="L320" class="blob-num js-line-number" data-line-number="320"></td>
+        <td id="LC320" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>###############</span></td>
+      </tr>
+      <tr>
+        <td id="L321" class="blob-num js-line-number" data-line-number="321"></td>
+        <td id="LC321" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L322" class="blob-num js-line-number" data-line-number="322"></td>
+        <td id="LC322" class="blob-code blob-code-inner js-file-line"><span class="pl-k">using</span> DataFrames</td>
+      </tr>
+      <tr>
+        <td id="L323" class="blob-num js-line-number" data-line-number="323"></td>
+        <td id="LC323" class="blob-code blob-code-inner js-file-line"><span class="pl-k">using</span> CSV</td>
+      </tr>
+      <tr>
+        <td id="L324" class="blob-num js-line-number" data-line-number="324"></td>
+        <td id="LC324" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L325" class="blob-num js-line-number" data-line-number="325"></td>
+        <td id="LC325" class="blob-code blob-code-inner js-file-line">df <span class="pl-k">=</span> <span class="pl-c1">DataFrame</span>(<span class="pl-c1">hcat</span>([GSit, GStime, GSpass, GScar], [Ait, Atime, Apass, Acar],</td>
+      </tr>
+      <tr>
+        <td id="L326" class="blob-num js-line-number" data-line-number="326"></td>
+        <td id="LC326" class="blob-code blob-code-inner js-file-line">                    [GSεit, GSεtime, GSεpass, GSεcar]))</td>
+      </tr>
+      <tr>
+        <td id="L327" class="blob-num js-line-number" data-line-number="327"></td>
+        <td id="LC327" class="blob-code blob-code-inner js-file-line">CSV<span class="pl-k">.</span><span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>table.csv<span class="pl-pds">&quot;</span></span>, df)</td>
       </tr>
 </table>
 
@@ -1721,7 +2091,7 @@
       <ul class="BlobToolbar-dropdown dropdown-menu dropdown-menu-se mt-2">
         <li><clipboard-copy class="dropdown-item" id="js-copy-lines" style="cursor:pointer;" data-original-text="Copy lines">Copy lines</clipboard-copy></li>
         <li><clipboard-copy class="dropdown-item" id="js-copy-permalink" style="cursor:pointer;" data-original-text="Copy permalink">Copy permalink</clipboard-copy></li>
-        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" href="/rnyang/mec_equil_codeassignments/blame/39d261458cd935ede0c19b2b12ddda102ee563cf/day1/ronyang/surgeSolve.jl">View git blame</a></li>
+        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" href="/rnyang/mec_equil_codeassignments/blame/39d261458cd935ede0c19b2b12ddda102ee563cf/day2/2-Code-Yang.jl">View git blame</a></li>
       </ul>
     </div>
   </div>
@@ -1751,7 +2121,7 @@
 <div class="footer container-lg px-3" role="contentinfo">
   <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
     <ul class="list-style-none d-flex flex-wrap ">
-      <li class="mr-3">&copy; 2018 <span title="0.25471s from unicorn-5ddc59885d-bqg9t">GitHub</span>, Inc.</li>
+      <li class="mr-3">&copy; 2018 <span title="0.44286s from unicorn-1333347201-1kh0s">GitHub</span>, Inc.</li>
         <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
         <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
         <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>
