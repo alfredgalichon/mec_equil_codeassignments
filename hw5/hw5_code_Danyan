@@ -1,0 +1,176 @@
+### HW for Math+Econ+Code Day 5
+## Danyan Zha
+## May 25, 2018
+
+rm(list=ls())
+library(gurobi)
+require('Matrix')
+require(matrixStats)
+
+nI = 5
+nJ = 2
+nB = 2^nI
+p = rep(1, nI)
+q = rep(1, nJ)
+
+phi_ij = matrix(runif(nI*nJ, min=1, max=2),nI,nJ)
+P = as.matrix(do.call(expand.grid,replicate(nI,0:1,simplify=FALSE)))
+phi_bj = sqrt(P %*% phi_ij^2)
+
+# Q1
+# Q1A Kelso and Crawford's algorithm
+  cont = TRUE
+  iter = 0
+  tol = 1e-5
+  maxiter = 1000000
+  W_ij = matrix(0,nI,nJ)
+  W_ij_new = W_ij
+  u_i = rep(0,nI)
+  v_j = rep(0,nJ)
+  
+  ptm = proc.time()
+  while(cont){
+    iter = iter + 1
+    propose_set_index = apply( phi_bj - P %*% W_ij , 2 ,which.max)
+    propose_set = P[propose_set_index,]
+    engage_set = apply(t(propose_set) * W_ij, 1, which.max) 
+    u_i = apply(W_ij, 1, max)
+    v_j = diag(phi_bj[propose_set_index,]) - diag(propose_set %*% W_ij)
+    for (i in 1:nI){
+      for (j in 1:nJ){
+        if (propose_set[j,i] ==1 & engage_set[i]!=j){
+          W_ij_new [i,j] = W_ij [i,j] + 0.01
+        }
+        else {W_ij_new [i,j] = W_ij [i,j] }
+      }
+    }
+    error = max(abs(W_ij_new-W_ij))
+    if ((error < tol) | (iter >= maxiter )) {cont=FALSE}
+    W_ij = W_ij_new
+  }
+  time = proc.time()-ptm
+  social_val = 0
+  for (j in 1:nJ){
+    social_val = social_val + phi_bj[propose_set_index[j],j]
+  }
+
+  if (iter >= maxiter ) 
+  {print("Maximum number of iterations reached with Kelso and Crawford's algorithm.")
+  } else {
+    print(paste0("Kelso-Crawford algorithm converged in ",iter, " steps and ", time[1], "s."))
+    print(paste0("Precision error is = ", error))
+    print(paste0("Total social output of the optimal assignment is = ", social_val))
+    cat ("The optimal assignment is as follows: \n")
+    print(propose_set)
+    cat ("Wages workers get are: \n")
+    print(u_i)
+    cat ("Utilities firms get are: \n")
+    print(v_j)
+  }
+  
+
+# Q1B Linear Optimization with Gurobi
+# Solve the Prime problem
+  A1 = kronecker(matrix(1,1,nJ),t(P))
+  A2 = kronecker(diag(nJ),matrix(1,1,nB))
+  A = rbind2(A1,A2)
+  d = c(p,q)
+
+  ptm = proc.time()
+  result_primal = gurobi(list(A=A,obj=c(phi_bj),modelsense="max",rhs=d,sense="<=",lb=0, ub=1), params=list(OutputFlag=0))
+  time = proc.time()-ptm
+  if (result_primal$status=="OPTIMAL") {
+    assignment_opt <- matrix(result_primal$x,nB, nJ)
+    workers <- matrix(0, nJ,nI)
+    for (j in 1:nJ){
+      workers[j,] <- P[which(assignment_opt[,j]==1),]
+    }
+    val = result_primal$objval
+  print(paste0("Value of the problem (Gurobi) =",val))
+  cat ("The optimal assignment is as follows: \n")
+  print(workers)
+  cat ("Wages workers get are: \n")
+  print(result_primal$pi[1:nI])
+  cat ("Utilities firms get are: \n")
+  print(result_primal$pi[(nI+1):(nI+nJ)])
+  } else {stop("optimization problem with Gurobi.") }
+
+# solve the Dual problem
+  A = cbind2(do.call("rbind", replicate(nJ, P, simplify = FALSE)),kronecker(diag(nJ),matrix(1,nB,1)))
+  ptm = proc.time()
+  result_dual = gurobi(list(A=A,obj=rep(1,nI+nJ),modelsense="min",rhs=c(phi_bj),sense=">=",lb=0), params=list(OutputFlag=0))
+  time = proc.time()-ptm
+  if (result_dual$status=="OPTIMAL") {
+    assignment_opt <- matrix(result_dual$pi,nB, nJ)
+    workers <- matrix(0, nJ,nI)
+    for (j in 1:nJ){
+      workers[j,] <- P[which(assignment_opt[,j]==1),]
+    }
+    print(paste0("Value of the dual problem (Gurobi) =",result_dual$objval))
+    cat ("The optimal assignment is as follows: \n")
+    print(workers)
+    cat ("Wages workers get are: \n")
+    print(result_dual$x[1:nI])
+    cat ("Utilities firms get are: \n")
+    print(result_dual$x[(nI+1):(nI+nJ)])
+  } else {stop("optimization problem with Gurobi.") }
+  
+# Q2 NTU with Immediate Acceptance
+  wage_ij = matrix(runif(nI*nJ,min=0,max=1),nI,nJ) # Exogenous minimum wage
+  phi_bj = sqrt(P %*% phi_ij^2)- P %*% wage_ij
+  alpha_ij = matrix(runif(nI*nJ, min=0, max=1),nI,nJ) # Exgogenous amenity utility for workers in $
+  u_ij = alpha_ij + wage_ij # Workers' utility
+
+  cont = TRUE
+  iter = 0
+  tol = 1e-5
+  maxiter = 1000000
+
+
+  available_index1 = c(1:nB)
+  available_index2 = c(1:nB)
+  propose_set = matrix(0,nJ,nI)
+  marriage_set = matrix(0,nJ,nI)
+  ptm = proc.time()
+  while(cont){
+    iter = iter + 1
+    for (j in 1:nJ){
+        if(j==1){
+          available_index = available_index1
+        } else{
+          available_index = available_index2
+        }
+        phi = phi_bj[available_index, j]
+        propose_set_index = which.max(phi)
+        propose_set[j,] = P[available_index,][propose_set_index,]
+    }
+  
+    engage_set_index = apply(t(propose_set) * u_ij, 1, which.max)
+    engage_set = as.matrix(sparseMatrix(i=engage_set_index,j=c(1:nI),x=1))
+
+    # update
+    unassign_workers = which(col_sums(marriage_set)==0)
+    for (i in c(unassign_workers)){
+      marriage_set[,i] = (propose_set*engage_set)[,i]
+    }
+    
+    assign_workers1 = which(marriage_set[1,]==1)
+    assign_workers2 = which(marriage_set[2,]==1)
+    
+    available_index1 = intersect(which(apply(as.matrix(P[,assign_workers1]),1,sum)==length(assign_workers1)),which(apply(as.matrix(P[,assign_workers2]),1,sum)==0))
+    available_index2 = intersect(which(apply(as.matrix(P[,assign_workers2]),1,sum)==length(assign_workers2)),which(apply(as.matrix(P[,assign_workers1]),1,sum)==0))
+    reject_set = propose_set-marriage_set
+    error = max(abs(reject_set))
+    if ((error < tol) | (iter >= maxiter )) {cont=FALSE}
+  }
+  
+  time = proc.time()-ptm
+  if (iter >= maxiter ) 
+  {print("Maximum number of iterations reached with Kelso and Crawford's algorithm.")
+  } else {
+    cat ("The optimal assignment is as follows: \n")
+    print(marriage_set)
+  }
+  
+
+  
